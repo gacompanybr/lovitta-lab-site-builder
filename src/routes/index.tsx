@@ -296,7 +296,16 @@ function Depoimentos() {
 }
 
 function Convenios() {
-  const planos = ["Unimed", "Bradesco Saúde", "SulAmérica", "Amil", "Hapvida", "NotreDame", "Porto Seguro", "Allianz"];
+  const planos = [
+    { name: "Unimed", domain: "unimed.coop.br" },
+    { name: "Bradesco Saúde", domain: "bradescoseguros.com.br" },
+    { name: "SulAmérica", domain: "sulamerica.com.br" },
+    { name: "Amil", domain: "amil.com.br" },
+    { name: "Hapvida", domain: "hapvida.com.br" },
+    { name: "NotreDame", domain: "gndi.com.br" },
+    { name: "Porto Seguro", domain: "portoseguro.com.br" },
+    { name: "Allianz", domain: "allianz.com.br" },
+  ];
   return (
     <section className="py-20 bg-secondary border-y border-border">
       <div className="container-x">
@@ -306,8 +315,17 @@ function Convenios() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
           {planos.map((p) => (
-            <div key={p} className="bg-card border border-border rounded-lg h-20 flex items-center justify-center text-primary/60 font-semibold text-sm hover:text-accent transition-colors">
-              {p}
+            <div key={p.name} className="bg-card border border-border rounded-lg p-4 flex flex-col items-center justify-center gap-2 hover:shadow-soft transition">
+              <div className="h-10 flex items-center justify-center">
+                <img
+                  src={`https://logo.clearbit.com/${p.domain}`}
+                  alt={p.name}
+                  className="max-h-10 max-w-full object-contain"
+                  loading="lazy"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+              </div>
+              <span className="text-xs font-medium text-primary/70 text-center">{p.name}</span>
             </div>
           ))}
         </div>
