@@ -38,13 +38,13 @@ function Navbar() {
   }, []);
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md shadow-card" : "bg-transparent"
+      className={`fixed top-0 inset-x-0 z-50 bg-background transition-shadow duration-300 ${
+        scrolled ? "shadow-card" : "shadow-sm"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-20">
+      <div className="container-x flex items-center justify-between h-24">
         <a href="#inicio" className="flex items-center gap-3">
-          <img src={logo} alt="Lóvitta" className="h-12 w-12 rounded-full bg-background object-contain" />
+          <img src={logo} alt="Lóvitta" className="h-16 w-16 rounded-full bg-background object-contain" />
           <span className="font-serif text-2xl font-bold text-primary hidden sm:block">Lóvitta</span>
         </a>
         <nav className="hidden lg:flex items-center gap-8">
