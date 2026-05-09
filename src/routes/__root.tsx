@@ -72,10 +72,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lóvitta Laboratório de Análises Clínicas" },
+      { title: "Lovitta Laboratório de Análises Clínicas" },
       { name: "description", content: "Exames laboratoriais com tecnologia de ponta, coleta domiciliar e resultados online 24h. Precisão que cuida." },
-      { name: "author", content: "Lóvitta Laboratório" },
-      { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
+      { name: "author", content: "Lovitta Laboratório" },
+      { property: "og:title", content: "Lovitta Laboratório de Análises Clínicas" },
       { property: "og:description", content: "Exames laboratoriais com tecnologia de ponta e atendimento humanizado." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
