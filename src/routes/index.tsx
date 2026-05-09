@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Microscope, Home, Smartphone, Calendar, FlaskConical,
-  Phone, Mail, MapPin, Clock, Instagram,
+  Phone, Mail, MapPin, Clock, Instagram, FileSearch,
   MessageCircle, Star, ArrowRight, ShieldCheck, Sparkles, Timer, HeartHandshake, Plus, Minus, Menu, X,
+  Droplet, Heart, Dna, Activity, Stethoscope, TestTube2, Baby, ShieldPlus,
 } from "lucide-react";
 import logo from "@/assets/lovitta-logo.png";
 import heroImg from "@/assets/hero-lab.jpg";
@@ -23,8 +24,9 @@ export const Route = createFileRoute("/")({
 
 const navLinks = [
   { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Exames", href: "#exames" },
+  { label: "Serviços", href: "#exames" },
   { label: "Equipe", href: "#equipe" },
+  { label: "Localização", href: "#localizacao" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
@@ -58,8 +60,8 @@ function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href="#contato" className="hidden md:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition">
-            Agendar exame <ArrowRight className="w-3.5 h-3.5" />
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex items-center gap-1.5 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 transition shadow-[0_8px_22px_-10px_rgba(204,0,0,0.55)]" style={{ backgroundColor: "#CC0000" }}>
+            <MessageCircle className="w-3.5 h-3.5" /> Agendar via WhatsApp
           </a>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-primary" aria-label="Menu">
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -105,11 +107,11 @@ function Hero() {
             Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="#contato" className="inline-flex items-center justify-center gap-2 bg-white text-primary px-7 py-3.5 rounded-full font-medium hover:bg-white/95 transition shadow-lg shadow-black/10">
-              <Calendar className="w-4 h-4" /> Agendar exame
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white shadow-[0_14px_40px_-14px_rgba(204,0,0,0.6)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "#CC0000" }}>
+              <MessageCircle className="w-4 h-4" /> Agendar Exame via WhatsApp
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-white shadow-lg shadow-emerald-900/20 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "var(--whatsapp)" }}>
-              <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+            <a href="#exames" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white px-7 py-4 rounded-full font-medium hover:bg-white/15 transition">
+              Ver serviços <ArrowRight className="w-4 h-4" />
             </a>
           </div>
           <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md">
@@ -166,43 +168,47 @@ function Diferenciais() {
 }
 
 function Exames() {
-  const exames = [
-    "Hemograma e Bioquímica",
-    "Hormônios",
-    "Microbiologia",
-    "Imunologia",
-    "Genética Molecular",
-    "Check-up Completo",
-    "Toxicológicos",
-    "Cardiológicos",
+  const servicos = [
+    { icon: Droplet, title: "Hemograma & Bioquímica", desc: "Análise completa do sangue, glicemia, lipídeos e função renal." },
+    { icon: Activity, title: "Hormônios", desc: "Tireoide, cortisol, testosterona, estradiol e perfil hormonal completo." },
+    { icon: TestTube2, title: "Microbiologia", desc: "Culturas, antibiogramas e identificação de agentes infecciosos." },
+    { icon: ShieldPlus, title: "Imunologia & Sorologia", desc: "Anticorpos, alergias, autoimunidade e doenças infecciosas." },
+    { icon: Dna, title: "Genética Molecular", desc: "PCR, biologia molecular e testes genéticos de alta precisão." },
+    { icon: Stethoscope, title: "Check-up Completo", desc: "Avaliação preventiva personalizada para cada fase da vida." },
+    { icon: Heart, title: "Cardiológicos", desc: "Marcadores cardíacos, troponina e perfil de risco cardiovascular." },
+    { icon: Baby, title: "Pré-natal & Pediátrico", desc: "Acompanhamento gestacional e cuidados específicos para crianças." },
   ];
   return (
     <section id="exames" className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="lg:sticky lg:top-32">
-            <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Exames</span>
-            <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
-              Um portfólio completo<br />de análises clínicas.
-            </h2>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
-            </p>
-            <a href="#contato" className="mt-8 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-              Consulte exames específicos <ArrowRight className="w-4 h-4" />
-            </a>
+        <div className="max-w-2xl mb-14 md:mb-16">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Serviços</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Análises clínicas completas, com tecnologia de ponta.
+          </h2>
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {servicos.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="group relative bg-background rounded-2xl p-7 border border-border hover:border-accent/40 hover:-translate-y-1 transition-all duration-300 shadow-[0_2px_8px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.18)]">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors" style={{ backgroundColor: "rgba(204,0,0,0.08)" }}>
+                <Icon className="w-6 h-6" strokeWidth={1.6} style={{ color: "#CC0000" }} />
+              </div>
+              <h3 className="text-base font-semibold text-primary mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 p-7 md:p-8 rounded-2xl bg-primary text-primary-foreground">
+          <div>
+            <p className="text-sm uppercase tracking-[0.18em] text-white/60 font-semibold">Não encontrou seu exame?</p>
+            <p className="mt-1 text-xl font-medium">Atendemos mais de 1.500 análises diferentes.</p>
           </div>
-          <div className="divide-y divide-border border-y border-border">
-            {exames.map((title, i) => (
-              <a key={title} href="#contato" className="group flex items-center justify-between py-6 hover:px-2 transition-all">
-                <div className="flex items-center gap-5">
-                  <span className="font-serif text-sm text-muted-foreground tabular-nums">0{i + 1}</span>
-                  <span className="font-serif text-xl md:text-2xl text-primary group-hover:text-accent transition-colors">{title}</span>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-              </a>
-            ))}
-          </div>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white hover:brightness-110 transition shadow-lg" style={{ backgroundColor: "#CC0000" }}>
+            <MessageCircle className="w-4 h-4" /> Consultar pelo WhatsApp
+          </a>
         </div>
       </div>
     </section>
@@ -462,13 +468,6 @@ Melhor horário: ${form.periodo}`;
                 </div>
               </div>
             ))}
-            <div className="rounded-xl overflow-hidden border border-border h-56 mt-3">
-              <iframe
-                title="Localização Lovitta"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
-                width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
-              />
-            </div>
           </div>
 
           {/* Form */}
@@ -611,6 +610,124 @@ function Footer() {
   );
 }
 
+function Localizacao() {
+  const horarios = [
+    { dia: "Segunda a Sexta", h: "07h às 18h" },
+    { dia: "Sábado", h: "07h às 12h" },
+    { dia: "Domingo", h: "Plantão sob agendamento" },
+  ];
+  return (
+    <section id="localizacao" className="py-24 md:py-32 bg-background">
+      <div className="container-x">
+        <div className="max-w-2xl mb-14">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Localização</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Estamos perto de você.
+          </h2>
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Estrutura moderna, fácil acesso e estacionamento. Coleta domiciliar disponível mediante agendamento.
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-6">
+          <div className="rounded-2xl overflow-hidden border border-border h-[420px] shadow-[0_18px_40px_-24px_rgba(15,23,42,0.18)]">
+            <iframe
+              title="Localização Lovitta Laboratório"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+              width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 mt-0.5 text-white/80" strokeWidth={1.6} />
+                <div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/55 font-semibold">Endereço</p>
+                  <p className="mt-1 font-medium">Rua Exemplo, 123 — Centro</p>
+                  <p className="text-white/70 text-sm">Sua Cidade — UF</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-secondary border border-border">
+              <div className="flex items-center gap-2 mb-4">
+                <Clock className="w-4 h-4 text-accent" strokeWidth={1.8} />
+                <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Horários de funcionamento</p>
+              </div>
+              <ul className="divide-y divide-border">
+                {horarios.map((h) => (
+                  <li key={h.dia} className="flex justify-between py-2.5 text-sm">
+                    <span className="text-primary font-medium">{h.dia}</span>
+                    <span className="text-muted-foreground">{h.h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-4 rounded-full font-semibold text-white hover:brightness-110 transition shadow-[0_14px_36px_-16px_rgba(204,0,0,0.55)]" style={{ backgroundColor: "#CC0000" }}>
+              <MessageCircle className="w-4 h-4 inline mr-2" /> Agendar visita
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StickyResultados() {
+  const [open, setOpen] = useState(false);
+  const [cpf, setCpf] = useState("");
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Acessar resultados de exames"
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex items-center gap-2 bg-primary text-primary-foreground px-3 py-3 rounded-r-xl shadow-lg hover:pl-4 transition-all"
+        style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
+      >
+        <span className="text-xs font-semibold tracking-[0.2em] uppercase">Resultados de Exames</span>
+      </button>
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Resultados"
+        className="md:hidden fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg text-xs font-semibold"
+      >
+        <FileSearch className="w-4 h-4" /> Resultados
+      </button>
+      {open && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setOpen(false)}>
+          <div className="bg-background rounded-2xl max-w-md w-full p-7 md:p-8 shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-secondary flex items-center justify-center text-muted-foreground" aria-label="Fechar">
+              <X className="w-4 h-4" />
+            </button>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(204,0,0,0.08)" }}>
+              <FileSearch className="w-6 h-6" style={{ color: "#CC0000" }} strokeWidth={1.6} />
+            </div>
+            <h3 className="text-2xl font-semibold text-primary tracking-tight">Acesse seus resultados</h3>
+            <p className="text-sm text-muted-foreground mt-2">Informe o CPF ou código do pedido para consultar seus laudos com segurança.</p>
+            <div className="mt-6 space-y-3">
+              <input
+                type="text"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                placeholder="CPF ou código do pedido"
+                className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+              />
+              <button
+                onClick={() => window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer")}
+                className="w-full h-12 rounded-full font-semibold text-white hover:brightness-110 transition shadow-[0_10px_30px_-12px_rgba(204,0,0,0.5)]"
+                style={{ backgroundColor: "#CC0000" }}
+              >
+                Consultar resultado
+              </button>
+              <p className="text-[11px] text-muted-foreground text-center pt-1">
+                Acesso seguro · Disponível 24h. Em caso de dúvida, fale conosco no WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function FloatingWhatsApp() {
   return (
     <a
@@ -637,11 +754,13 @@ function Index() {
         <ComoFunciona />
         <Equipe />
         <Depoimentos />
+        <Localizacao />
         <Faq />
         <Contato />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <StickyResultados />
     </div>
   );
 }
