@@ -520,7 +520,7 @@ function Index() {
         <Diferenciais />
         <Exames />
         <ComoFunciona />
-        <Resultados />
+        <Equipe />
         <Depoimentos />
         <Faq />
         <Contato />
