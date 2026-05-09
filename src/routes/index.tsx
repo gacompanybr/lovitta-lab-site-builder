@@ -430,8 +430,7 @@ WhatsApp: ${form.whatsapp.trim()}
 Tipo de atendimento: ${form.tipo}
 Mensagem: ${form.mensagem.trim() || "—"}
 Melhor horário: ${form.periodo}`;
-    const phone = WHATSAPP_URL.replace(/\D/g, "");
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
     setTimeout(() => setSending(false), 800);
   };
 
