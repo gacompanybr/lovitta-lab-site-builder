@@ -29,10 +29,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-whatsapp: var(--whatsapp);
-  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
-  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--primary) 18%, transparent);
-  --shadow-card: 0 4px 20px -8px color-mix(in oklab, var(--primary) 12%, transparent);
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--primary) 14%, transparent);
+  --shadow-card: 0 6px 24px -10px rgba(15, 23, 42, 0.08);
   --gradient-hero: linear-gradient(135deg, color-mix(in oklab, var(--primary) 88%, transparent) 0%, color-mix(in oklab, var(--primary) 50%, transparent) 60%, transparent 100%);
   --gradient-dark: linear-gradient(135deg, var(--primary) 0%, color-mix(in oklab, var(--primary) 70%, var(--accent)) 100%);
 }
