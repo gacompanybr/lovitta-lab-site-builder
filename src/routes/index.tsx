@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/lovitta-logo.png";
 import heroImg from "@/assets/hero-lab.jpg";
+import lorenImg from "@/assets/loren-biomedica.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/")({
 const navLinks = [
   { label: "Diferenciais", href: "#diferenciais" },
   { label: "Exames", href: "#exames" },
-  { label: "Resultados", href: "#resultados" },
+  { label: "Equipe", href: "#equipe" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
@@ -40,13 +41,13 @@ function Navbar() {
   }, []);
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? "border-b border-border/70 shadow-[0_1px_0_rgba(0,0,0,0.02)]" : "border-b border-transparent"
+      className={`fixed top-0 inset-x-0 z-50 bg-background transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_1px_0_rgba(0,0,0,0.06),0_8px_24px_-12px_rgba(0,0,0,0.08)]" : "shadow-[0_1px_0_rgba(0,0,0,0.04)]"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-20 md:h-22">
-        <a href="#inicio" className="flex items-center gap-2.5 shrink-0">
-          <img src={logo} alt="Lóvitta" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
+      <div className="container-x flex items-center justify-between h-20 md:h-24">
+        <a href="#inicio" className="flex items-center gap-3 shrink-0">
+          <img src={logo} alt="Lóvitta" className="h-14 w-14 md:h-16 md:w-16 object-contain" />
           <span className="font-serif text-xl md:text-2xl font-semibold text-primary tracking-tight">Lóvitta</span>
         </a>
         <nav className="hidden lg:flex items-center gap-9">
@@ -107,7 +108,7 @@ function Hero() {
             <a href="#contato" className="inline-flex items-center justify-center gap-2 bg-white text-primary px-7 py-3.5 rounded-full font-medium hover:bg-white/95 transition shadow-lg shadow-black/10">
               <Calendar className="w-4 h-4" /> Agendar exame
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 rounded-full font-medium hover:bg-white/10 transition backdrop-blur-sm">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-white shadow-lg shadow-emerald-900/20 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "var(--whatsapp)" }}>
               <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
             </a>
           </div>
@@ -241,28 +242,65 @@ function ComoFunciona() {
   );
 }
 
-function Resultados() {
+function Equipe() {
   return (
-    <section id="resultados" className="py-24 md:py-32 bg-primary text-primary-foreground">
+    <section id="equipe" className="py-24 md:py-32 bg-background">
       <div className="container-x">
-        <div className="max-w-3xl">
-          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Resultados</span>
-          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold tracking-tight">
-            Seu laudo, quando<br />e onde precisar.
+        <div className="max-w-2xl mb-14 md:mb-20">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Equipe Especializada</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Profissionais que cuidam<br />de você com excelência.
           </h2>
-          <p className="mt-5 text-primary-foreground/70 text-lg leading-relaxed">
-            Acesse seus resultados online com total privacidade, 24 horas por dia.
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Por trás de cada exame, uma equipe dedicada à sua saúde — com técnica, sensibilidade e compromisso real com o seu bem-estar.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl">
-            <input
-              type="text"
-              placeholder="CPF ou código do pedido"
-              className="flex-1 px-5 py-4 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-white/50 focus:outline-none focus:bg-white/15 focus:border-white/30 transition"
-            />
-            <button className="bg-white text-primary px-7 py-4 rounded-full font-medium hover:bg-white/95 transition">
-              Acessar
-            </button>
-          </form>
+        </div>
+
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center">
+          <div className="relative">
+            <div className="absolute -inset-4 md:-inset-6 rounded-[2rem] bg-secondary -z-10" />
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-primary shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]">
+              <img
+                src={lorenImg}
+                alt="Loren Bermejo Ciminio — Biomédica"
+                className="w-full h-auto object-cover aspect-[3/4]"
+              />
+            </div>
+          </div>
+
+          <div className="lg:pl-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-primary/80 text-[11px] font-medium uppercase tracking-[0.16em]">
+              <Sparkles className="w-3 h-3 text-accent" /> Responsável Técnica
+            </div>
+            <h3 className="mt-5 font-serif text-3xl md:text-4xl font-semibold text-primary tracking-tight">
+              Loren Bermejo Ciminio
+            </h3>
+            <p className="mt-2 text-accent font-medium text-sm tracking-wide">Biomédica · CRBM</p>
+
+            <p className="mt-7 text-muted-foreground leading-relaxed text-[15px] md:text-base">
+              Pós-graduada em Biomedicina Estética, Loren une rigor técnico e olhar humano em cada análise. Sua atuação é guiada por precisão laboratorial, escuta atenta e um compromisso genuíno com a saúde e o bem-estar de cada paciente.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed text-[15px] md:text-base">
+              É essa combinação entre ciência, cuidado e acolhimento que define a forma como a Lóvitta entrega resultados em que você pode confiar.
+            </p>
+
+            <div className="mt-9 grid sm:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+              {[
+                { v: "Biomedicina", l: "Formação superior" },
+                { v: "Pós-graduação", l: "Biomedicina Estética" },
+                { v: "Humanizado", l: "Atendimento" },
+              ].map((s) => (
+                <div key={s.l} className="bg-background p-5">
+                  <div className="font-serif text-lg text-primary font-semibold leading-tight">{s.v}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{s.l}</div>
+                </div>
+              ))}
+            </div>
+
+            <a href="#contato" className="mt-9 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+              Agendar com a nossa equipe <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -482,7 +520,7 @@ function Index() {
         <Diferenciais />
         <Exames />
         <ComoFunciona />
-        <Resultados />
+        <Equipe />
         <Depoimentos />
         <Faq />
         <Contato />
