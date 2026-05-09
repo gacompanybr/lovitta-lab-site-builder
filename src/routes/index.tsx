@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/lovitta-logo.png";
 import heroImg from "@/assets/hero-lab.jpg";
+import lorenImg from "@/assets/loren-biomedica.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
