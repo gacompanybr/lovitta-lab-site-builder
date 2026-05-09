@@ -671,63 +671,6 @@ function Localizacao() {
   );
 }
 
-function StickyResultados() {
-  const [open, setOpen] = useState(false);
-  const [cpf, setCpf] = useState("");
-  return (
-    <>
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Acessar resultados de exames"
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex items-center gap-2 bg-primary text-primary-foreground px-3 py-3 rounded-r-xl shadow-lg hover:pl-4 transition-all"
-        style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
-      >
-        <span className="text-xs font-semibold tracking-[0.2em] uppercase">Resultados de Exames</span>
-      </button>
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Resultados"
-        className="md:hidden fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg text-xs font-semibold"
-      >
-        <FileSearch className="w-4 h-4" /> Resultados
-      </button>
-      {open && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setOpen(false)}>
-          <div className="bg-background rounded-2xl max-w-md w-full p-7 md:p-8 shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
-            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-secondary flex items-center justify-center text-muted-foreground" aria-label="Fechar">
-              <X className="w-4 h-4" />
-            </button>
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(204,0,0,0.08)" }}>
-              <FileSearch className="w-6 h-6" style={{ color: "#CC0000" }} strokeWidth={1.6} />
-            </div>
-            <h3 className="text-2xl font-semibold text-primary tracking-tight">Acesse seus resultados</h3>
-            <p className="text-sm text-muted-foreground mt-2">Informe o CPF ou código do pedido para consultar seus laudos com segurança.</p>
-            <div className="mt-6 space-y-3">
-              <input
-                type="text"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                placeholder="CPF ou código do pedido"
-                className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
-              />
-              <button
-                onClick={() => window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer")}
-                className="w-full h-12 rounded-full font-semibold text-white hover:brightness-110 transition shadow-[0_10px_30px_-12px_rgba(204,0,0,0.5)]"
-                style={{ backgroundColor: "#CC0000" }}
-              >
-                Consultar resultado
-              </button>
-              <p className="text-[11px] text-muted-foreground text-center pt-1">
-                Acesso seguro · Disponível 24h. Em caso de dúvida, fale conosco no WhatsApp.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
 function FloatingWhatsApp() {
   return (
     <a
