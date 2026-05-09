@@ -108,7 +108,7 @@ function Hero() {
             <a href="#contato" className="inline-flex items-center justify-center gap-2 bg-white text-primary px-7 py-3.5 rounded-full font-medium hover:bg-white/95 transition shadow-lg shadow-black/10">
               <Calendar className="w-4 h-4" /> Agendar exame
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 rounded-full font-medium hover:bg-white/10 transition backdrop-blur-sm">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-white shadow-lg shadow-emerald-900/20 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "var(--whatsapp)" }}>
               <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
             </a>
           </div>
