@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
 const navLinks = [
   { label: "Diferenciais", href: "#diferenciais" },
   { label: "Exames", href: "#exames" },
-  { label: "Resultados", href: "#resultados" },
+  { label: "Equipe", href: "#equipe" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
