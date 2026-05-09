@@ -116,7 +116,7 @@ function Hero() {
           </div>
           <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md">
             {[
-              { v: "+15", l: "Anos de experiência" },
+              { v: "★", l: "Precisão em cada análise" },
               { v: "24h", l: "Resultados online" },
               { v: "100%", l: "Coleta humanizada" },
             ].map((s) => (
