@@ -761,11 +761,13 @@ function Index() {
         <ComoFunciona />
         <Equipe />
         <Depoimentos />
+        <Localizacao />
         <Faq />
         <Contato />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <StickyResultados />
     </div>
   );
 }
