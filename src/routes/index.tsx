@@ -31,7 +31,9 @@ const navLinks = [
   { label: "Contato", href: "#contato" },
 ];
 
-const WHATSAPP_URL = "https://wa.me/5500000000000";
+const WHATSAPP_PHONE = "5514998937080";
+const WHATSAPP_DEFAULT_MESSAGE = "Olá, gostaria de agendar um exame.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_DEFAULT_MESSAGE)}`;
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
