@@ -617,6 +617,124 @@ function Footer() {
   );
 }
 
+function Localizacao() {
+  const horarios = [
+    { dia: "Segunda a Sexta", h: "07h às 18h" },
+    { dia: "Sábado", h: "07h às 12h" },
+    { dia: "Domingo", h: "Plantão sob agendamento" },
+  ];
+  return (
+    <section id="localizacao" className="py-24 md:py-32 bg-background">
+      <div className="container-x">
+        <div className="max-w-2xl mb-14">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Localização</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Estamos perto de você.
+          </h2>
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Estrutura moderna, fácil acesso e estacionamento. Coleta domiciliar disponível mediante agendamento.
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-6">
+          <div className="rounded-2xl overflow-hidden border border-border h-[420px] shadow-[0_18px_40px_-24px_rgba(15,23,42,0.18)]">
+            <iframe
+              title="Localização Lovitta Laboratório"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+              width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 mt-0.5 text-white/80" strokeWidth={1.6} />
+                <div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/55 font-semibold">Endereço</p>
+                  <p className="mt-1 font-medium">Rua Exemplo, 123 — Centro</p>
+                  <p className="text-white/70 text-sm">Sua Cidade — UF</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6 rounded-2xl bg-secondary border border-border">
+              <div className="flex items-center gap-2 mb-4">
+                <Clock className="w-4 h-4 text-accent" strokeWidth={1.8} />
+                <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Horários de funcionamento</p>
+              </div>
+              <ul className="divide-y divide-border">
+                {horarios.map((h) => (
+                  <li key={h.dia} className="flex justify-between py-2.5 text-sm">
+                    <span className="text-primary font-medium">{h.dia}</span>
+                    <span className="text-muted-foreground">{h.h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-4 rounded-full font-semibold text-white hover:brightness-110 transition shadow-[0_14px_36px_-16px_rgba(204,0,0,0.55)]" style={{ backgroundColor: "#CC0000" }}>
+              <MessageCircle className="w-4 h-4 inline mr-2" /> Agendar visita
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StickyResultados() {
+  const [open, setOpen] = useState(false);
+  const [cpf, setCpf] = useState("");
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Acessar resultados de exames"
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex items-center gap-2 bg-primary text-primary-foreground px-3 py-3 rounded-r-xl shadow-lg hover:pl-4 transition-all"
+        style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
+      >
+        <span className="text-xs font-semibold tracking-[0.2em] uppercase">Resultados de Exames</span>
+      </button>
+      <button
+        onClick={() => setOpen(true)}
+        aria-label="Resultados"
+        className="md:hidden fixed bottom-5 left-5 z-40 inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full shadow-lg text-xs font-semibold"
+      >
+        <FileSearch className="w-4 h-4" /> Resultados
+      </button>
+      {open && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setOpen(false)}>
+          <div className="bg-background rounded-2xl max-w-md w-full p-7 md:p-8 shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-secondary flex items-center justify-center text-muted-foreground" aria-label="Fechar">
+              <X className="w-4 h-4" />
+            </button>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(204,0,0,0.08)" }}>
+              <FileSearch className="w-6 h-6" style={{ color: "#CC0000" }} strokeWidth={1.6} />
+            </div>
+            <h3 className="text-2xl font-semibold text-primary tracking-tight">Acesse seus resultados</h3>
+            <p className="text-sm text-muted-foreground mt-2">Informe o CPF ou código do pedido para consultar seus laudos com segurança.</p>
+            <div className="mt-6 space-y-3">
+              <input
+                type="text"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                placeholder="CPF ou código do pedido"
+                className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+              />
+              <button
+                onClick={() => window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer")}
+                className="w-full h-12 rounded-full font-semibold text-white hover:brightness-110 transition shadow-[0_10px_30px_-12px_rgba(204,0,0,0.5)]"
+                style={{ backgroundColor: "#CC0000" }}
+              >
+                Consultar resultado
+              </button>
+              <p className="text-[11px] text-muted-foreground text-center pt-1">
+                Acesso seguro · Disponível 24h. Em caso de dúvida, fale conosco no WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function FloatingWhatsApp() {
   return (
     <a
