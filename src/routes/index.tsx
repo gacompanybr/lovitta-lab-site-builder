@@ -41,13 +41,13 @@ function Navbar() {
   }, []);
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? "border-b border-border/70 shadow-[0_1px_0_rgba(0,0,0,0.02)]" : "border-b border-transparent"
+      className={`fixed top-0 inset-x-0 z-50 bg-background transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_1px_0_rgba(0,0,0,0.06),0_8px_24px_-12px_rgba(0,0,0,0.08)]" : "shadow-[0_1px_0_rgba(0,0,0,0.04)]"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-20 md:h-22">
-        <a href="#inicio" className="flex items-center gap-2.5 shrink-0">
-          <img src={logo} alt="Lóvitta" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
+      <div className="container-x flex items-center justify-between h-20 md:h-24">
+        <a href="#inicio" className="flex items-center gap-3 shrink-0">
+          <img src={logo} alt="Lóvitta" className="h-14 w-14 md:h-16 md:w-16 object-contain" />
           <span className="font-serif text-xl md:text-2xl font-semibold text-primary tracking-tight">Lóvitta</span>
         </a>
         <nav className="hidden lg:flex items-center gap-9">
