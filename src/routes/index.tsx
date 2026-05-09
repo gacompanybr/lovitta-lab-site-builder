@@ -60,8 +60,8 @@ function Navbar() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href="#contato" className="hidden md:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition">
-            Agendar exame <ArrowRight className="w-3.5 h-3.5" />
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex items-center gap-1.5 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 transition shadow-[0_8px_22px_-10px_rgba(204,0,0,0.55)]" style={{ backgroundColor: "#CC0000" }}>
+            <MessageCircle className="w-3.5 h-3.5" /> Agendar via WhatsApp
           </a>
           <button onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-primary" aria-label="Menu">
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
