@@ -94,7 +94,7 @@ function Hero() {
       </div>
       <div className="container-x relative z-10 py-16 md:py-24">
         <div className="max-w-2xl fade-up">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/90 border border-white/15 backdrop-blur text-xs font-medium tracking-wide uppercase">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-white/95 border border-white/10 text-xs font-medium tracking-[0.18em] uppercase shadow-sm" style={{ backgroundColor: "#2d1927" }}>
             <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
           </span>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
@@ -398,17 +398,54 @@ function Faq() {
 }
 
 function Contato() {
+  const [form, setForm] = useState({
+    nome: "",
+    whatsapp: "",
+    tipo: "Exames laboratoriais",
+    mensagem: "",
+    periodo: "Manhã",
+  });
+  const [sending, setSending] = useState(false);
+
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nome.trim() || !form.whatsapp.trim()) return;
+    setSending(true);
+    const text =
+`Olá, gostaria de solicitar atendimento.
+
+Nome: ${form.nome.trim()}
+WhatsApp: ${form.whatsapp.trim()}
+Tipo de atendimento: ${form.tipo}
+Mensagem: ${form.mensagem.trim() || "—"}
+Melhor horário: ${form.periodo}`;
+    const phone = WHATSAPP_URL.replace(/\D/g, "");
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    setTimeout(() => setSending(false), 800);
+  };
+
+  const tipos = ["Exames laboratoriais", "Exames preventivos", "Atendimento especializado", "Informações gerais"];
+  const periodos = ["Manhã", "Tarde", "Noite"];
+
   return (
     <section id="contato" className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-14">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Contato</span>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
             Vamos cuidar de você.
           </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Seu atendimento começa aqui. Preencha em menos de 1 minuto e nossa equipe retornará o mais rápido possível pelo WhatsApp.
+          </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div className="space-y-3">
+
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Info column */}
+          <div className="lg:col-span-2 space-y-3">
             {[
               { icon: MapPin, title: "Endereço", text: "Rua Exemplo, 123 — Centro, Sua Cidade" },
               { icon: Phone, title: "Telefone", text: "(00) 0000-0000" },
@@ -425,23 +462,101 @@ function Contato() {
                 </div>
               </div>
             ))}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-4 rounded-full font-medium text-white hover:opacity-90 transition mt-2"
-              style={{ backgroundColor: "var(--whatsapp)" }}
-            >
-              <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
-            </a>
+            <div className="rounded-xl overflow-hidden border border-border h-56 mt-3">
+              <iframe
+                title="Localização Lóvitta"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
+              />
+            </div>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-border min-h-[420px] bg-background">
-            <iframe
-              title="Localização Lóvitta"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
-              width="100%" height="100%" style={{ border: 0, minHeight: 420 }} allowFullScreen loading="lazy"
-            />
-          </div>
+
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="lg:col-span-3 bg-background rounded-2xl border border-border p-7 md:p-10 shadow-[0_8px_40px_-20px_rgba(0,0,0,0.15)]"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-accent font-medium">
+                <HeartHandshake className="w-3.5 h-3.5" /> Atendimento personalizado
+              </span>
+            </div>
+            <h3 className="font-serif text-2xl md:text-3xl text-primary font-semibold tracking-tight">
+              Fale com a nossa equipe
+            </h3>
+            <p className="text-sm text-muted-foreground mt-2">
+              Cuidado, atenção e precisão para sua saúde. Leva menos de 1 minuto.
+            </p>
+
+            <div className="mt-7 space-y-5">
+              <div>
+                <label className="block text-xs font-medium text-primary mb-1.5">Nome completo</label>
+                <input
+                  type="text" required maxLength={100}
+                  value={form.nome} onChange={update("nome")}
+                  placeholder="Digite seu nome"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-primary mb-1.5">WhatsApp</label>
+                <input
+                  type="tel" required maxLength={20}
+                  value={form.whatsapp} onChange={update("whatsapp")}
+                  placeholder="(00) 00000-0000"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-medium text-primary mb-1.5">Tipo de atendimento</label>
+                  <select
+                    value={form.tipo} onChange={update("tipo")}
+                    className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  >
+                    {tipos.map((t) => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-primary mb-1.5">Melhor período para contato</label>
+                  <select
+                    value={form.periodo} onChange={update("periodo")}
+                    className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  >
+                    {periodos.map((p) => <option key={p} value={p}>{p}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-primary mb-1.5">Como podemos ajudar?</label>
+                <textarea
+                  rows={4} maxLength={1000}
+                  value={form.mensagem} onChange={update("mensagem")}
+                  placeholder="Descreva rapidamente o que você precisa"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="group w-full inline-flex items-center justify-center gap-2 h-13 py-4 rounded-full font-medium text-white shadow-lg shadow-emerald-900/20 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                style={{ backgroundColor: "var(--whatsapp)" }}
+              >
+                <MessageCircle className="w-4 h-4" />
+                {sending ? "Abrindo WhatsApp..." : "Agendar pelo WhatsApp"}
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
+
+              <div className="flex items-center justify-center gap-2 text-[11px] text-muted-foreground pt-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-accent" />
+                <span>Seus dados são tratados com sigilo. Estamos prontos para cuidar de você.</span>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
