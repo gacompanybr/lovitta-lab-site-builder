@@ -703,7 +703,6 @@ function Index() {
       </main>
       <Footer />
       <FloatingWhatsApp />
-      <StickyResultados />
     </div>
   );
 }
