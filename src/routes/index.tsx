@@ -107,11 +107,11 @@ function Hero() {
             Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="#contato" className="inline-flex items-center justify-center gap-2 bg-white text-primary px-7 py-3.5 rounded-full font-medium hover:bg-white/95 transition shadow-lg shadow-black/10">
-              <Calendar className="w-4 h-4" /> Agendar exame
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white shadow-[0_14px_40px_-14px_rgba(204,0,0,0.6)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "#CC0000" }}>
+              <MessageCircle className="w-4 h-4" /> Agendar Exame via WhatsApp
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-white shadow-lg shadow-emerald-900/20 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "var(--whatsapp)" }}>
-              <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+            <a href="#exames" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white px-7 py-4 rounded-full font-medium hover:bg-white/15 transition">
+              Ver serviços <ArrowRight className="w-4 h-4" />
             </a>
           </div>
           <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md">
