@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Microscope, Home, Smartphone, Calendar, FlaskConical,
-  Phone, Mail, MapPin, Clock, Instagram, FileSearch,
+  Phone, Mail, MapPin, Clock, Instagram,
   MessageCircle, Star, ArrowRight, ShieldCheck, Sparkles, Timer, HeartHandshake, Plus, Minus, Menu, X,
   Droplet, Heart, Dna, Activity, Stethoscope, TestTube2, Baby, ShieldPlus,
 } from "lucide-react";
