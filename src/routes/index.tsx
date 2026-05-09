@@ -94,7 +94,7 @@ function Hero() {
       </div>
       <div className="container-x relative z-10 py-16 md:py-24">
         <div className="max-w-2xl fade-up">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/90 border border-white/15 backdrop-blur text-xs font-medium tracking-wide uppercase">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-white/95 border border-white/10 text-xs font-medium tracking-[0.18em] uppercase shadow-sm" style={{ backgroundColor: "#2d1927" }}>
             <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
           </span>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
