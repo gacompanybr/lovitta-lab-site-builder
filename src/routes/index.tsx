@@ -49,10 +49,9 @@ function Navbar() {
         scrolled ? "shadow-[0_1px_0_rgba(0,0,0,0.06),0_8px_24px_-12px_rgba(0,0,0,0.08)]" : "shadow-[0_1px_0_rgba(0,0,0,0.04)]"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-20 md:h-24">
-        <a href="#inicio" className="flex items-center gap-3 shrink-0">
-          <img src={logo} alt="Lovitta" className="h-14 w-14 md:h-16 md:w-16 object-contain" />
-          <span className="font-serif text-xl md:text-2xl font-semibold text-primary tracking-tight">Lovitta</span>
+      <div className="container-x flex items-center justify-between h-24 md:h-28">
+        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lovitta">
+          <img src={logo} alt="Lovitta" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
         </a>
         <nav className="hidden lg:flex items-center gap-9">
           {navLinks.map((l) => (
