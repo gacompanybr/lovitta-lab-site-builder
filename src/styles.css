@@ -45,14 +45,14 @@
   --card-foreground: oklch(0.22 0.03 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 250);
-  /* Deep navy */
-  --primary: oklch(0.24 0.06 255);
-  --primary-foreground: oklch(0.99 0 0);
-  /* Ice gray */
-  --secondary: oklch(0.975 0.005 240);
-  --secondary-foreground: oklch(0.24 0.06 255);
-  --muted: oklch(0.97 0.005 240);
-  --muted-foreground: oklch(0.5 0.02 250);
+  /* Soft warm taupe / mocha */
+  --primary: oklch(0.5 0.035 65);
+  --primary-foreground: oklch(0.99 0.005 80);
+  /* Light beige */
+  --secondary: oklch(0.965 0.012 75);
+  --secondary-foreground: oklch(0.4 0.04 60);
+  --muted: oklch(0.97 0.01 75);
+  --muted-foreground: oklch(0.55 0.025 65);
   /* Brand red #CC0000 */
   --accent: oklch(0.55 0.225 27);
   --accent-foreground: oklch(0.99 0 0);
