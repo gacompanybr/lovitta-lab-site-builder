@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  Microscope, Home, Smartphone, Stethoscope, Calendar, FlaskConical,
-  ClipboardCheck, Phone, Mail, MapPin, Clock, Instagram, Facebook,
-  MessageCircle, Star, ArrowRight, Activity, Dna, Shield, Heart, TestTube,
+  Microscope, Home, Smartphone, Calendar, FlaskConical,
+  Phone, Mail, MapPin, Clock, Instagram,
+  MessageCircle, Star, ArrowRight, ShieldCheck, Sparkles, Timer, HeartHandshake, Plus, Minus, Menu, X,
 } from "lucide-react";
 import logo from "@/assets/lovitta-logo.png";
 import heroImg from "@/assets/hero-lab.jpg";
@@ -12,69 +12,70 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Lóvitta Laboratório — Análises Clínicas com Precisão" },
-      { name: "description", content: "Exames laboratoriais com tecnologia de ponta, coleta domiciliar e resultados online 24h em um atendimento humanizado." },
+      { name: "description", content: "Exames laboratoriais com tecnologia de ponta, coleta domiciliar e resultados online em um atendimento humanizado." },
       { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
-      { property: "og:description", content: "Precisão que cuida. Resultados em que você confia." },
+      { property: "og:description", content: "Precisão nos resultados. Cuidado em cada detalhe." },
     ],
   }),
   component: Index,
 });
 
 const navLinks = [
-  { label: "Início", href: "#inicio" },
+  { label: "Diferenciais", href: "#diferenciais" },
   { label: "Exames", href: "#exames" },
   { label: "Resultados", href: "#resultados" },
-  { label: "Sobre Nós", href: "#sobre" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
+
+const WHATSAPP_URL = "https://wa.me/5500000000000";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 bg-background transition-shadow duration-300 ${
-        scrolled ? "shadow-card" : "shadow-sm"
+      className={`fixed top-0 inset-x-0 z-50 bg-background/85 backdrop-blur-md transition-all duration-300 ${
+        scrolled ? "border-b border-border/70 shadow-[0_1px_0_rgba(0,0,0,0.02)]" : "border-b border-transparent"
       }`}
     >
-      <div className="container-x flex items-center justify-between h-24">
-        <a href="#inicio" className="flex items-center gap-3">
-          <img src={logo} alt="Lóvitta" className="h-16 w-16 rounded-full bg-background object-contain" />
-          <span className="font-serif text-2xl font-bold text-primary hidden sm:block">Lóvitta</span>
+      <div className="container-x flex items-center justify-between h-20 md:h-22">
+        <a href="#inicio" className="flex items-center gap-2.5 shrink-0">
+          <img src={logo} alt="Lóvitta" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
+          <span className="font-serif text-xl md:text-2xl font-semibold text-primary tracking-tight">Lóvitta</span>
         </a>
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-9">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors">
+            <a key={l.href} href={l.href} className="text-[13px] font-medium text-foreground/70 hover:text-foreground transition-colors">
               {l.label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <a href="#contato" className="hidden md:inline-flex items-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded-md font-medium hover:opacity-90 transition shadow-soft">
-            <Calendar className="w-4 h-4" /> Agendar Exame
+        <div className="flex items-center gap-2">
+          <a href="#contato" className="hidden md:inline-flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition">
+            Agendar exame <ArrowRight className="w-3.5 h-3.5" />
           </a>
-          <button onClick={() => setOpen(!open)} className="lg:hidden p-2" aria-label="Menu">
-            <div className="space-y-1.5">
-              <span className="block w-6 h-0.5 bg-primary" />
-              <span className="block w-6 h-0.5 bg-primary" />
-              <span className="block w-6 h-0.5 bg-primary" />
-            </div>
+          <button onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-primary" aria-label="Menu">
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
       {open && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <nav className="container-x py-4 flex flex-col gap-3">
+        <div className="lg:hidden bg-background border-t border-border animate-in fade-in slide-in-from-top-2 duration-200">
+          <nav className="container-x py-4 flex flex-col">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2 text-foreground/80 hover:text-accent">
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-3 text-foreground/80 border-b border-border/60 last:border-0">
                 {l.label}
               </a>
             ))}
+            <a href="#contato" onClick={() => setOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full font-medium">
+              Agendar exame
+            </a>
           </nav>
         </div>
       )}
@@ -84,42 +85,41 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="inicio" className="relative min-h-[92vh] md:min-h-screen flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Laboratório Lóvitta" className="w-full h-full object-cover" width={1920} height={1080} />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+        <img src={heroImg} alt="Laboratório Lóvitta" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
       </div>
-      <div className="container-x relative z-10 py-20">
+      <div className="container-x relative z-10 py-16 md:py-24">
         <div className="max-w-2xl fade-up">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent-foreground border border-accent/30 backdrop-blur text-sm font-medium mb-6 text-white">
-            Laboratório de Análises Clínicas
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/90 border border-white/15 backdrop-blur text-xs font-medium tracking-wide uppercase">
+            <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
           </span>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-white leading-[1.05]">
-            Precisão que cuida. <br />
-            <span className="text-accent">Resultados</span> em que você confia.
+          <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
+            Precisão nos resultados.<br />
+            <span className="italic font-normal text-white/85">Cuidado em cada detalhe.</span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/85 max-w-xl">
-            Exames laboratoriais com tecnologia de ponta e atendimento humanizado, pensados para o seu bem-estar.
+          <p className="mt-6 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
+            Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#contato" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-7 py-3.5 rounded-md font-semibold hover:opacity-90 transition shadow-soft">
-              <Calendar className="w-5 h-5" /> Agendar Exame
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="#contato" className="inline-flex items-center justify-center gap-2 bg-white text-primary px-7 py-3.5 rounded-full font-medium hover:bg-white/95 transition shadow-lg shadow-black/10">
+              <Calendar className="w-4 h-4" /> Agendar exame
             </a>
-            <a href="#exames" className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-7 py-3.5 rounded-md font-semibold hover:bg-white/10 transition backdrop-blur">
-              Ver Exames <ArrowRight className="w-5 h-5" />
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 rounded-full font-medium hover:bg-white/10 transition backdrop-blur-sm">
+              <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
             </a>
           </div>
-          <div className="mt-12 flex flex-wrap gap-6 text-white/90">
+          <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md">
             {[
-              { icon: Smartphone, label: "Resultados Online" },
-              { icon: Home, label: "Coleta em Domicílio" },
-              { icon: ClipboardCheck, label: "Laudos Digitais" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm">
-                <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center backdrop-blur">
-                  <Icon className="w-4 h-4" />
-                </div>
-                {label}
+              { v: "+15", l: "Anos de experiência" },
+              { v: "24h", l: "Resultados online" },
+              { v: "100%", l: "Coleta humanizada" },
+            ].map((s) => (
+              <div key={s.l}>
+                <div className="font-serif text-2xl md:text-3xl text-white font-semibold">{s.v}</div>
+                <div className="text-[11px] sm:text-xs text-white/65 mt-1 leading-tight">{s.l}</div>
               </div>
             ))}
           </div>
@@ -131,30 +131,30 @@ function Hero() {
 
 function Diferenciais() {
   const items = [
-    { icon: Microscope, title: "Tecnologia de Ponta", desc: "Equipamentos modernos garantindo análises precisas e confiáveis." },
-    { icon: Home, title: "Coleta Domiciliar", desc: "Conforto e segurança da sua casa, com profissionais qualificados." },
-    { icon: Smartphone, title: "Resultados Online 24h", desc: "Acesse seus laudos de forma rápida e segura, a qualquer hora." },
-    { icon: Stethoscope, title: "Equipe Especializada", desc: "Biomédicos e técnicos comprometidos com seu cuidado." },
+    { icon: Microscope, title: "Tecnologia avançada", desc: "Equipamentos modernos calibrados para análises precisas e confiáveis." },
+    { icon: Timer, title: "Resultados rápidos", desc: "Laudos disponíveis online em até 24 horas, com clareza e segurança." },
+    { icon: Home, title: "Coleta domiciliar", desc: "Conforto da sua casa com profissionais qualificados e atenciosos." },
+    { icon: HeartHandshake, title: "Atendimento humano", desc: "Cada paciente é único — escuta atenta e cuidado em cada etapa." },
+    { icon: ShieldCheck, title: "Precisão laboratorial", desc: "Protocolos rigorosos de controle de qualidade em todas as análises." },
+    { icon: Smartphone, title: "Acesso digital", desc: "Resultados na palma da sua mão, 24 horas por dia, com total privacidade." },
   ];
   return (
-    <section id="sobre" className="py-24 bg-secondary">
+    <section id="diferenciais" className="py-24 md:py-32 bg-background">
       <div className="container-x">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Diferenciais</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">
-            Por que escolher a Lóvitta?
+        <div className="max-w-2xl mb-16">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Diferenciais</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Por que a Lóvitta é diferente.
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Mais que exames, oferecemos cuidado em cada detalhe da sua jornada.
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Mais que exames, oferecemos uma experiência cuidadosa, transparente e construída em torno da sua confiança.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {items.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-card p-8 rounded-xl shadow-card hover:shadow-soft hover:-translate-y-1 transition-all duration-300 border border-border">
-              <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-5">
-                <Icon className="w-7 h-7 text-accent" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-primary mb-2">{title}</h3>
+            <div key={title} className="bg-background p-8 md:p-10 hover:bg-secondary/60 transition-colors duration-300">
+              <Icon className="w-6 h-6 text-accent mb-5" strokeWidth={1.5} />
+              <h3 className="font-serif text-xl font-semibold text-primary mb-2">{title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
             </div>
           ))}
@@ -166,34 +166,42 @@ function Diferenciais() {
 
 function Exames() {
   const exames = [
-    { icon: TestTube, title: "Hemograma e Bioquímica", desc: "Análises completas do sangue e perfil metabólico." },
-    { icon: Activity, title: "Hormônios", desc: "Avaliação hormonal completa para todas as fases da vida." },
-    { icon: FlaskConical, title: "Microbiologia", desc: "Identificação de microrganismos e antibiogramas." },
-    { icon: Shield, title: "Imunologia", desc: "Diagnóstico de doenças autoimunes e infecciosas." },
-    { icon: Dna, title: "Genética Molecular", desc: "Testes genéticos com tecnologia de última geração." },
-    { icon: Heart, title: "Check-up Completo", desc: "Avaliação preventiva personalizada para sua saúde." },
+    "Hemograma e Bioquímica",
+    "Hormônios",
+    "Microbiologia",
+    "Imunologia",
+    "Genética Molecular",
+    "Check-up Completo",
+    "Toxicológicos",
+    "Cardiológicos",
   ];
   return (
-    <section id="exames" className="py-24 bg-background">
+    <section id="exames" className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Serviços</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">Nossos Exames</h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Um portfólio completo de análises clínicas para diagnósticos precisos.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {exames.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="group p-8 rounded-xl border border-border bg-card hover:border-accent/40 hover:shadow-soft transition-all">
-              <Icon className="w-10 h-10 text-accent mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-serif text-2xl font-bold text-primary mb-2">{title}</h3>
-              <p className="text-muted-foreground mb-4">{desc}</p>
-              <a href="#contato" className="inline-flex items-center gap-1 text-accent font-medium text-sm hover:gap-2 transition-all">
-                Saiba mais <ArrowRight className="w-4 h-4" />
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="lg:sticky lg:top-32">
+            <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Exames</span>
+            <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+              Um portfólio completo<br />de análises clínicas.
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
+            </p>
+            <a href="#contato" className="mt-8 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+              Consulte exames específicos <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          <div className="divide-y divide-border border-y border-border">
+            {exames.map((title, i) => (
+              <a key={title} href="#contato" className="group flex items-center justify-between py-6 hover:px-2 transition-all">
+                <div className="flex items-center gap-5">
+                  <span className="font-serif text-sm text-muted-foreground tabular-nums">0{i + 1}</span>
+                  <span className="font-serif text-xl md:text-2xl text-primary group-hover:text-accent transition-colors">{title}</span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
               </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -202,28 +210,29 @@ function Exames() {
 
 function ComoFunciona() {
   const steps = [
-    { icon: Calendar, title: "Agende seu exame", desc: "Marque online ou por telefone, no horário que preferir." },
-    { icon: FlaskConical, title: "Realize a coleta", desc: "No laboratório ou no conforto da sua casa." },
-    { icon: Smartphone, title: "Acesse seus resultados", desc: "Online, com segurança, 24 horas por dia." },
+    { icon: Calendar, title: "Agende", desc: "Online ou pelo WhatsApp, no horário que melhor se encaixa na sua rotina." },
+    { icon: FlaskConical, title: "Realize a coleta", desc: "Em nossa unidade ou no conforto da sua casa, com toda a segurança." },
+    { icon: Smartphone, title: "Acesse o laudo", desc: "Disponível online em até 24 horas, com privacidade e clareza." },
   ];
   return (
-    <section className="py-24 bg-secondary">
+    <section className="py-24 md:py-32 bg-background">
       <div className="container-x">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Processo</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">Como funciona?</h2>
+        <div className="max-w-2xl mb-16">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Processo</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Simples do início ao fim.
+          </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-10 relative">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-px md:bg-border md:border md:border-border md:rounded-2xl md:overflow-hidden">
           {steps.map((s, i) => (
-            <div key={s.title} className="relative text-center">
-              <div className="w-20 h-20 mx-auto rounded-full bg-card border-2 border-accent flex items-center justify-center shadow-soft mb-5 relative z-10">
-                <s.icon className="w-9 h-9 text-accent" />
-                <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">
-                  {i + 1}
-                </span>
+            <div key={s.title} className="md:bg-background md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-serif text-sm text-accent tabular-nums">0{i + 1}</span>
+                <span className="h-px flex-1 bg-border" />
+                <s.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-primary mb-2">{s.title}</h3>
-              <p className="text-muted-foreground max-w-xs mx-auto">{s.desc}</p>
+              <h3 className="font-serif text-2xl font-semibold text-primary mb-3">{s.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -234,23 +243,24 @@ function ComoFunciona() {
 
 function Resultados() {
   return (
-    <section id="resultados" className="py-24 relative overflow-hidden" style={{ background: "var(--gradient-dark)" }}>
-      <div className="container-x relative z-10">
-        <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold">
-            Acesse seus resultados de forma rápida e segura
+    <section id="resultados" className="py-24 md:py-32 bg-primary text-primary-foreground">
+      <div className="container-x">
+        <div className="max-w-3xl">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Resultados</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold tracking-tight">
+            Seu laudo, quando<br />e onde precisar.
           </h2>
-          <p className="mt-4 text-primary-foreground/80 text-lg">
-            Disponível 24 horas por dia, 7 dias por semana.
+          <p className="mt-5 text-primary-foreground/70 text-lg leading-relaxed">
+            Acesse seus resultados online com total privacidade, 24 horas por dia.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+          <form onSubmit={(e) => e.preventDefault()} className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl">
             <input
               type="text"
               placeholder="CPF ou código do pedido"
-              className="flex-1 px-5 py-4 rounded-md bg-background/95 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="flex-1 px-5 py-4 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-white/50 focus:outline-none focus:bg-white/15 focus:border-white/30 transition"
             />
-            <button className="bg-accent text-accent-foreground px-7 py-4 rounded-md font-semibold hover:opacity-90 transition shadow-soft">
-              Acessar Resultado
+            <button className="bg-white text-primary px-7 py-4 rounded-full font-medium hover:bg-white/95 transition">
+              Acessar
             </button>
           </form>
         </div>
@@ -261,33 +271,35 @@ function Resultados() {
 
 function Depoimentos() {
   const items = [
-    { name: "Mariana Silva", exam: "Check-up Completo", text: "Atendimento impecável e resultados muito rápidos. A equipe é extremamente atenciosa." },
-    { name: "Carlos Mendes", exam: "Hemograma", text: "A coleta em domicílio foi um diferencial enorme. Profissionais super qualificados." },
+    { name: "Mariana Silva", exam: "Check-up Completo", text: "Atendimento impecável e resultados muito rápidos. A equipe é extremamente atenciosa do início ao fim." },
+    { name: "Carlos Mendes", exam: "Hemograma", text: "A coleta em domicílio foi um diferencial enorme. Profissionais super qualificados e gentis." },
     { name: "Ana Beatriz", exam: "Hormônios", text: "Confio plenamente na Lóvitta. Precisão nos exames e atendimento humanizado de verdade." },
   ];
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Depoimentos</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">
-            O que nossos pacientes dizem
+        <div className="max-w-2xl mb-16">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Pacientes</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Histórias de quem confia.
           </h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((t) => (
-            <div key={t.name} className="bg-secondary p-8 rounded-xl border border-border">
-              <div className="flex gap-1 mb-4">
+            <figure key={t.name} className="bg-background p-8 rounded-2xl border border-border flex flex-col">
+              <div className="flex gap-0.5 mb-5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
                 ))}
               </div>
-              <p className="text-foreground/85 italic mb-6 leading-relaxed">"{t.text}"</p>
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-primary">{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.exam}</p>
-              </div>
-            </div>
+              <blockquote className="font-serif text-lg text-primary/90 leading-relaxed flex-1">
+                "{t.text}"
+              </blockquote>
+              <figcaption className="mt-6 pt-5 border-t border-border">
+                <p className="font-medium text-primary text-sm">{t.name}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{t.exam}</p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
@@ -295,39 +307,52 @@ function Depoimentos() {
   );
 }
 
-function Convenios() {
-  const planos = [
-    { name: "Unimed", domain: "unimed.coop.br" },
-    { name: "Bradesco Saúde", domain: "bradescoseguros.com.br" },
-    { name: "SulAmérica", domain: "sulamerica.com.br" },
-    { name: "Amil", domain: "amil.com.br" },
-    { name: "Hapvida", domain: "hapvida.com.br" },
-    { name: "NotreDame", domain: "gndi.com.br" },
-    { name: "Porto Seguro", domain: "portoseguro.com.br" },
-    { name: "Allianz", domain: "allianz.com.br" },
+function Faq() {
+  const faqs = [
+    { q: "Preciso de jejum para os exames?", a: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." },
+    { q: "Em quanto tempo recebo os resultados?", a: "A maioria dos exames fica disponível online em até 24 horas. Análises mais complexas podem ter prazos diferentes, sempre informados no momento da coleta." },
+    { q: "Como funciona a coleta domiciliar?", a: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." },
+    { q: "Quais são os horários de atendimento?", a: "Segunda a sexta das 7h às 18h e sábados das 7h às 12h. Para coleta domiciliar, horários estendidos sob agendamento." },
+    { q: "Como acesso meus resultados online?", a: "Basta informar seu CPF ou o código do pedido na seção de resultados deste site. Acesso seguro, 24 horas por dia." },
   ];
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
   return (
-    <section className="py-20 bg-secondary border-y border-border">
+    <section id="faq" className="py-24 md:py-32 bg-background">
       <div className="container-x">
-        <div className="text-center mb-12">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Parcerias</span>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mt-3">Convênios Aceitos</h2>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-          {planos.map((p) => (
-            <div key={p.name} className="bg-card border border-border rounded-lg p-4 flex flex-col items-center justify-center gap-2 hover:shadow-soft transition">
-              <div className="h-10 flex items-center justify-center">
-                <img
-                  src={`https://logo.clearbit.com/${p.domain}`}
-                  alt={p.name}
-                  className="max-h-10 max-w-full object-contain"
-                  loading="lazy"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                />
-              </div>
-              <span className="text-xs font-medium text-primary/70 text-center">{p.name}</span>
-            </div>
-          ))}
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+          <div>
+            <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Dúvidas</span>
+            <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+              Perguntas<br />frequentes.
+            </h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Não encontrou o que procurava? Fale conosco no WhatsApp.
+            </p>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+              <MessageCircle className="w-4 h-4" /> Tirar dúvida
+            </a>
+          </div>
+          <div className="divide-y divide-border border-y border-border">
+            {faqs.map((f, i) => {
+              const isOpen = openIdx === i;
+              return (
+                <div key={f.q}>
+                  <button
+                    onClick={() => setOpenIdx(isOpen ? null : i)}
+                    className="w-full flex items-center justify-between gap-6 py-6 text-left"
+                  >
+                    <span className="font-serif text-lg md:text-xl text-primary">{f.q}</span>
+                    <span className="shrink-0 w-8 h-8 rounded-full border border-border flex items-center justify-center text-primary">
+                      {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                    </span>
+                  </button>
+                  <div className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"}`}>
+                    <p className="overflow-hidden text-muted-foreground leading-relaxed pr-12">{f.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -336,45 +361,47 @@ function Convenios() {
 
 function Contato() {
   return (
-    <section id="contato" className="py-24 bg-background">
+    <section id="contato" className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-accent font-medium uppercase tracking-wider text-sm">Contato</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mt-3">Fale Conosco</h2>
+        <div className="max-w-2xl mb-16">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Contato</span>
+          <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Vamos cuidar de você.
+          </h2>
         </div>
         <div className="grid lg:grid-cols-2 gap-10">
-          <div className="space-y-5">
+          <div className="space-y-3">
             {[
               { icon: MapPin, title: "Endereço", text: "Rua Exemplo, 123 — Centro, Sua Cidade" },
               { icon: Phone, title: "Telefone", text: "(00) 0000-0000" },
               { icon: Mail, title: "E-mail", text: "contato@lovittalaboratorio.com.br" },
-              { icon: Clock, title: "Horário", text: "Seg a Sex: 7h às 18h | Sáb: 7h às 12h" },
+              { icon: Clock, title: "Horário", text: "Seg–Sex: 7h às 18h · Sáb: 7h às 12h" },
             ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="flex items-start gap-4 p-5 rounded-lg bg-secondary border border-border">
-                <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-accent" />
+              <div key={title} className="flex items-start gap-4 p-5 rounded-xl bg-background border border-border">
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p className="font-semibold text-primary">{title}</p>
-                  <p className="text-muted-foreground text-sm mt-1">{text}</p>
+                  <p className="font-medium text-primary text-sm">{title}</p>
+                  <p className="text-muted-foreground text-sm mt-0.5">{text}</p>
                 </div>
               </div>
             ))}
             <a
-              href="https://wa.me/5500000000000"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-4 rounded-lg font-semibold text-white shadow-soft hover:opacity-90 transition"
+              className="flex items-center justify-center gap-2 w-full py-4 rounded-full font-medium text-white hover:opacity-90 transition mt-2"
               style={{ backgroundColor: "var(--whatsapp)" }}
             >
-              <MessageCircle className="w-5 h-5" /> Falar no WhatsApp
+              <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
             </a>
           </div>
-          <div className="rounded-xl overflow-hidden border border-border min-h-[400px] bg-secondary">
+          <div className="rounded-2xl overflow-hidden border border-border min-h-[420px] bg-background">
             <iframe
               title="Localização Lóvitta"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
-              width="100%" height="100%" style={{ border: 0, minHeight: 400 }} allowFullScreen loading="lazy"
+              width="100%" height="100%" style={{ border: 0, minHeight: 420 }} allowFullScreen loading="lazy"
             />
           </div>
         </div>
@@ -385,75 +412,64 @@ function Contato() {
 
 function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-16">
+    <footer className="bg-primary text-primary-foreground pt-20 pb-10">
       <div className="container-x">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+        <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Lóvitta" className="h-12 w-12 rounded-full bg-white object-contain" />
-              <span className="font-serif text-2xl font-bold">Lóvitta</span>
+            <div className="flex items-center gap-2.5 mb-5">
+              <img src={logo} alt="Lóvitta" className="h-12 w-12 object-contain" />
+              <span className="font-serif text-2xl font-semibold">Lóvitta</span>
             </div>
-            <p className="text-primary-foreground/70 max-w-md">
-              Laboratório de Análises Clínicas. Precisão que cuida, resultados em que você confia.
+            <p className="text-primary-foreground/60 max-w-md leading-relaxed">
+              Laboratório de Análises Clínicas. Precisão nos resultados, cuidado em cada detalhe.
             </p>
-            <div className="flex gap-3 mt-6">
-              <a href="https://www.instagram.com/lovittalaboratorio/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-accent transition flex items-center justify-center">
-                <Instagram className="w-5 h-5" />
+            <div className="flex gap-2 mt-6">
+              <a href="https://www.instagram.com/lovittalaboratorio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-white/15 hover:bg-white/10 transition flex items-center justify-center">
+                <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-accent transition flex items-center justify-center">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="https://wa.me/5500000000000" className="w-10 h-10 rounded-full bg-white/10 hover:bg-accent transition flex items-center justify-center">
-                <MessageCircle className="w-5 h-5" />
+              <a href={WHATSAPP_URL} aria-label="WhatsApp" className="w-10 h-10 rounded-full border border-white/15 hover:bg-white/10 transition flex items-center justify-center">
+                <MessageCircle className="w-4 h-4" />
               </a>
             </div>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Navegação</h4>
-            <ul className="space-y-2 text-primary-foreground/70 text-sm">
+            <h4 className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50 mb-4 font-sans font-medium">Navegação</h4>
+            <ul className="space-y-3 text-primary-foreground/75 text-sm">
               {navLinks.map((l) => (
-                <li key={l.href}><a href={l.href} className="hover:text-accent transition">{l.label}</a></li>
+                <li key={l.href}><a href={l.href} className="hover:text-white transition">{l.label}</a></li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Atendimento</h4>
-            <ul className="space-y-2 text-primary-foreground/70 text-sm">
+            <h4 className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50 mb-4 font-sans font-medium">Atendimento</h4>
+            <ul className="space-y-3 text-primary-foreground/75 text-sm">
               <li>Seg–Sex: 7h às 18h</li>
               <li>Sáb: 7h às 12h</li>
               <li>(00) 0000-0000</li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-primary-foreground/60">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-primary-foreground/50">
           <p>© 2025 Lóvitta Laboratório. Todos os direitos reservados.</p>
-          <a href="#" className="hover:text-accent transition">Política de Privacidade</a>
+          <a href="#" className="hover:text-white transition">Política de Privacidade</a>
         </div>
       </div>
     </footer>
   );
 }
 
-function FloatingActions() {
+function FloatingWhatsApp() {
   return (
-    <>
-      <a
-        href="https://wa.me/5500000000000"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-soft hover:scale-110 transition"
-        style={{ backgroundColor: "var(--whatsapp)" }}
-      >
-        <MessageCircle className="w-7 h-7" />
-      </a>
-      <a
-        href="#contato"
-        className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-accent text-accent-foreground py-4 text-center font-semibold shadow-soft"
-      >
-        Agendar Exame
-      </a>
-    </>
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar no WhatsApp"
+      className="fixed bottom-5 right-5 md:bottom-6 md:right-6 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-lg shadow-black/15 hover:scale-105 active:scale-95 transition-transform"
+      style={{ backgroundColor: "var(--whatsapp)" }}
+    >
+      <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
+    </a>
   );
 }
 
@@ -461,18 +477,18 @@ function Index() {
   return (
     <div className="bg-background">
       <Navbar />
-      <main className="pb-16 md:pb-0">
+      <main>
         <Hero />
         <Diferenciais />
         <Exames />
         <ComoFunciona />
         <Resultados />
         <Depoimentos />
-        <Convenios />
+        <Faq />
         <Contato />
       </main>
       <Footer />
-      <FloatingActions />
+      <FloatingWhatsApp />
     </div>
   );
 }
