@@ -168,43 +168,47 @@ function Diferenciais() {
 }
 
 function Exames() {
-  const exames = [
-    "Hemograma e Bioquímica",
-    "Hormônios",
-    "Microbiologia",
-    "Imunologia",
-    "Genética Molecular",
-    "Check-up Completo",
-    "Toxicológicos",
-    "Cardiológicos",
+  const servicos = [
+    { icon: Droplet, title: "Hemograma & Bioquímica", desc: "Análise completa do sangue, glicemia, lipídeos e função renal." },
+    { icon: Activity, title: "Hormônios", desc: "Tireoide, cortisol, testosterona, estradiol e perfil hormonal completo." },
+    { icon: TestTube2, title: "Microbiologia", desc: "Culturas, antibiogramas e identificação de agentes infecciosos." },
+    { icon: ShieldPlus, title: "Imunologia & Sorologia", desc: "Anticorpos, alergias, autoimunidade e doenças infecciosas." },
+    { icon: Dna, title: "Genética Molecular", desc: "PCR, biologia molecular e testes genéticos de alta precisão." },
+    { icon: Stethoscope, title: "Check-up Completo", desc: "Avaliação preventiva personalizada para cada fase da vida." },
+    { icon: Heart, title: "Cardiológicos", desc: "Marcadores cardíacos, troponina e perfil de risco cardiovascular." },
+    { icon: Baby, title: "Pré-natal & Pediátrico", desc: "Acompanhamento gestacional e cuidados específicos para crianças." },
   ];
   return (
     <section id="exames" className="py-24 md:py-32 bg-secondary">
       <div className="container-x">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="lg:sticky lg:top-32">
-            <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Exames</span>
-            <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
-              Um portfólio completo<br />de análises clínicas.
-            </h2>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
-            </p>
-            <a href="#contato" className="mt-8 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-              Consulte exames específicos <ArrowRight className="w-4 h-4" />
-            </a>
+        <div className="max-w-2xl mb-14 md:mb-16">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Serviços</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+            Análises clínicas completas, com tecnologia de ponta.
+          </h2>
+          <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {servicos.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="group relative bg-background rounded-2xl p-7 border border-border hover:border-accent/40 hover:-translate-y-1 transition-all duration-300 shadow-[0_2px_8px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_18px_40px_-20px_rgba(15,23,42,0.18)]">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors" style={{ backgroundColor: "rgba(204,0,0,0.08)" }}>
+                <Icon className="w-6 h-6" strokeWidth={1.6} style={{ color: "#CC0000" }} />
+              </div>
+              <h3 className="text-base font-semibold text-primary mb-2">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 p-7 md:p-8 rounded-2xl bg-primary text-primary-foreground">
+          <div>
+            <p className="text-sm uppercase tracking-[0.18em] text-white/60 font-semibold">Não encontrou seu exame?</p>
+            <p className="mt-1 text-xl font-medium">Atendemos mais de 1.500 análises diferentes.</p>
           </div>
-          <div className="divide-y divide-border border-y border-border">
-            {exames.map((title, i) => (
-              <a key={title} href="#contato" className="group flex items-center justify-between py-6 hover:px-2 transition-all">
-                <div className="flex items-center gap-5">
-                  <span className="font-serif text-sm text-muted-foreground tabular-nums">0{i + 1}</span>
-                  <span className="font-serif text-xl md:text-2xl text-primary group-hover:text-accent transition-colors">{title}</span>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-              </a>
-            ))}
-          </div>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white hover:brightness-110 transition shadow-lg" style={{ backgroundColor: "#CC0000" }}>
+            <MessageCircle className="w-4 h-4" /> Consultar pelo WhatsApp
+          </a>
         </div>
       </div>
     </section>
