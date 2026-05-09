@@ -78,8 +78,8 @@ function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a href="#contato" onClick={() => setOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full font-medium">
-              Agendar exame
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 text-white px-5 py-3 rounded-full font-medium" style={{ backgroundColor: "#CC0000" }}>
+              <MessageCircle className="w-4 h-4" /> Agendar via WhatsApp
             </a>
           </nav>
         </div>
