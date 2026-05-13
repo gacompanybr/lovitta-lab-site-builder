@@ -145,7 +145,7 @@ function Hero() {
           <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md">
             {[
               { v: "★", l: "Precisão em cada análise" },
-              { v: "24h", l: "Resultados online" },
+              { v: "LGPD", l: "Resultados com sigilo" },
               { v: "100%", l: "Coleta humanizada" },
             ].map((s) => (
               <div key={s.l}>
@@ -163,11 +163,11 @@ function Hero() {
 function Diferenciais() {
   const items = [
     { icon: Microscope, title: "Tecnologia avançada", desc: "Equipamentos modernos calibrados para análises precisas e confiáveis." },
-    { icon: Timer, title: "Resultados rápidos", desc: "Laudos disponíveis online em até 24 horas, com clareza e segurança." },
+    { icon: Timer, title: "Prazos responsáveis", desc: "Cada análise tem o tempo adequado para garantir precisão, segurança e confiabilidade." },
     { icon: Home, title: "Coleta domiciliar", desc: "Conforto da sua casa com profissionais qualificados e atenciosos." },
     { icon: HeartHandshake, title: "Atendimento humano", desc: "Cada paciente é único — escuta atenta e cuidado em cada etapa." },
     { icon: ShieldCheck, title: "Precisão laboratorial", desc: "Protocolos rigorosos de controle de qualidade em todas as análises." },
-    { icon: Smartphone, title: "Acesso digital", desc: "Resultados na palma da sua mão, 24 horas por dia, com total privacidade." },
+    { icon: Smartphone, title: "Acesso digital", desc: "Resultados disponibilizados com segurança e total confidencialidade, conforme a LGPD." },
   ];
   return (
     <section id="diferenciais" className="py-24 md:py-32 bg-background">
@@ -247,7 +247,7 @@ function ComoFunciona() {
   const steps = [
     { icon: Calendar, title: "Agende", desc: "Online ou pelo WhatsApp, no horário que melhor se encaixa na sua rotina." },
     { icon: FlaskConical, title: "Realize a coleta", desc: "Em nossa unidade ou no conforto da sua casa, com toda a segurança." },
-    { icon: Smartphone, title: "Acesse o laudo", desc: "Disponível online em até 24 horas, com privacidade e clareza." },
+    { icon: Smartphone, title: "Acesse o laudo", desc: "Disponibilizado de forma segura e confidencial, conforme o protocolo de cada análise." },
   ];
   return (
     <section className="py-24 md:py-32 bg-background">
@@ -312,7 +312,7 @@ function Equipe() {
             <p className="mt-2 text-accent font-medium text-sm tracking-wide">Biomédica · CRBM</p>
 
             <p className="mt-7 text-muted-foreground leading-relaxed text-[15px] md:text-base">
-              Pós-graduada em Biomedicina Estética, Loren une rigor técnico e olhar humano em cada análise. Sua atuação é guiada por precisão laboratorial, escuta atenta e um compromisso genuíno com a saúde e o bem-estar de cada paciente.
+              Biomédica pós-graduada em Estética, Loren une rigor técnico e olhar humano em cada análise. Sua atuação é guiada por precisão laboratorial, escuta atenta e um compromisso genuíno com a saúde e o bem-estar de cada paciente.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-[15px] md:text-base">
               É essa combinação entre ciência, cuidado e acolhimento que define a forma como o Lóvitta entrega resultados em que você pode confiar.
@@ -382,10 +382,10 @@ function Depoimentos() {
 function Faq() {
   const faqs = [
     { q: "Preciso de jejum para os exames?", a: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." },
-    { q: "Em quanto tempo recebo os resultados?", a: "A maioria dos exames fica disponível online em até 24 horas. Análises mais complexas podem ter prazos diferentes, sempre informados no momento da coleta." },
+    { q: "Em quanto tempo recebo os resultados?", a: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial. Trabalhamos com responsabilidade, precisão e agilidade, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." },
     { q: "Como funciona a coleta domiciliar?", a: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." },
-    { q: "Quais são os horários de atendimento?", a: "Segunda a sexta das 7h às 18h e sábados das 7h às 12h. Para coleta domiciliar, horários estendidos sob agendamento." },
-    { q: "Como acesso meus resultados online?", a: "Basta informar seu CPF ou o código do pedido na seção de resultados deste site. Acesso seguro, 24 horas por dia." },
+    { q: "Quais são os horários de atendimento?", a: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." },
+    { q: "Como acesso meus resultados de exames?", a: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade das informações. Todo o processo segue rigorosamente as diretrizes éticas e de proteção de dados estabelecidas pela LGPD." },
   ];
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   return (
@@ -640,7 +640,7 @@ function Footer() {
 function Localizacao() {
   const horarios = [
     { dia: "Segunda a Sexta", h: "07h às 18h" },
-    { dia: "Sábado", h: "07h às 12h" },
+    { dia: "Sábado", h: "Somente com agendamento prévio" },
     { dia: "Domingo", h: "Plantão sob agendamento" },
   ];
   return (
