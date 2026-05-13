@@ -482,7 +482,7 @@ Melhor horário: ${form.periodo}`;
             {[
               { icon: MapPin, title: "Endereço", text: "Rua Exemplo, 123 — Centro, Sua Cidade" },
               { icon: Phone, title: "Telefone", text: "(14) 99893-7080" },
-              { icon: Mail, title: "E-mail", text: "contato@lovittalaboratorio.com.br" },
+              { icon: Mail, title: "E-mail", text: "lovittalab@hotmail.com" },
               { icon: Clock, title: "Horário", text: "Seg–Sex: 7h às 18h · Sáb: 7h às 12h" },
             ].map(({ icon: Icon, title, text }) => (
               <div key={title} className="flex items-start gap-4 p-5 rounded-xl bg-background border border-border">
@@ -625,6 +625,7 @@ function Footer() {
               <li>Seg–Sex: 7h às 18h</li>
               <li>Sáb: 7h às 12h</li>
               <li>(14) 99893-7080</li>
+              <li>lovittalab@hotmail.com</li>
             </ul>
           </div>
         </div>
