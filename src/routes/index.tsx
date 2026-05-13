@@ -481,7 +481,7 @@ Melhor horário: ${form.periodo}`;
           <div className="lg:col-span-2 space-y-3">
             {[
               { icon: MapPin, title: "Endereço", text: "Rua Exemplo, 123 — Centro, Sua Cidade" },
-              { icon: Phone, title: "Telefone", text: "(00) 0000-0000" },
+              { icon: Phone, title: "Telefone", text: "(14) 99893-7080" },
               { icon: Mail, title: "E-mail", text: "contato@lovittalaboratorio.com.br" },
               { icon: Clock, title: "Horário", text: "Seg–Sex: 7h às 18h · Sáb: 7h às 12h" },
             ].map(({ icon: Icon, title, text }) => (
@@ -624,7 +624,7 @@ function Footer() {
             <ul className="space-y-3 text-primary-foreground/75 text-sm">
               <li>Seg–Sex: 7h às 18h</li>
               <li>Sáb: 7h às 12h</li>
-              <li>(00) 0000-0000</li>
+              <li>(14) 99893-7080</li>
             </ul>
           </div>
         </div>
