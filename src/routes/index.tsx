@@ -678,7 +678,7 @@ function Localizacao() {
                   <p className="text-white/70 text-sm">Duartina — SP</p>
                 </div>
               </div>
-            </div>
+            </a>
             <div className="p-6 rounded-2xl bg-secondary border border-border">
               <div className="flex items-center gap-2 mb-4">
                 <Clock className="w-4 h-4 text-accent" strokeWidth={1.8} />
