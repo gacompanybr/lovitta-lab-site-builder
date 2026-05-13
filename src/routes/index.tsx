@@ -7,15 +7,16 @@ import {
   Droplet, Heart, Dna, Activity, Stethoscope, TestTube2, Baby, ShieldPlus,
 } from "lucide-react";
 import logo from "@/assets/lovitta-logo.png";
-import heroImg from "@/assets/hero-lab.jpg";
-import lorenImg from "@/assets/loren-biomedica.png";
+import clinicFacade from "@/assets/clinic-facade.png";
+import clinicReception from "@/assets/clinic-reception.png";
+import lorenImg from "@/assets/biomedica.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lovitta Laboratório — Análises Clínicas com Precisão" },
+      { title: "Lóvitta Laboratório — Análises Clínicas com Precisão" },
       { name: "description", content: "Exames laboratoriais com tecnologia de ponta, coleta domiciliar e resultados online em um atendimento humanizado." },
-      { property: "og:title", content: "Lovitta Laboratório de Análises Clínicas" },
+      { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
       { property: "og:description", content: "Precisão nos resultados. Cuidado em cada detalhe." },
     ],
   }),
@@ -50,8 +51,8 @@ function Navbar() {
       }`}
     >
       <div className="container-x flex items-center justify-between h-24 md:h-28">
-        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lovitta">
-          <img src={logo} alt="Lovitta" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
+        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lóvitta">
+          <img src={logo} alt="Lóvitta" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
         </a>
         <nav className="hidden lg:flex items-center gap-9">
           {navLinks.map((l) => (
@@ -88,12 +89,38 @@ function Navbar() {
 }
 
 function Hero() {
+  const slides = [
+    { src: clinicFacade, alt: "Fachada do laboratório Lóvitta" },
+    { src: clinicReception, alt: "Recepção do laboratório Lóvitta" },
+  ];
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 6000);
+    return () => clearInterval(id);
+  }, [slides.length]);
   return (
     <section id="inicio" className="relative min-h-[92vh] md:min-h-screen flex items-center pt-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Laboratório Lovitta" className="w-full h-full object-cover" />
+        {slides.map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt={s.alt}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${i === current ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === current ? "w-8 bg-white" : "w-4 bg-white/40 hover:bg-white/60"}`}
+            />
+          ))}
+        </div>
       </div>
       <div className="container-x relative z-10 py-16 md:py-24">
         <div className="max-w-2xl fade-up">
@@ -148,7 +175,7 @@ function Diferenciais() {
         <div className="max-w-2xl mb-16">
           <span className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Diferenciais</span>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl font-semibold text-primary tracking-tight">
-            Por que a Lovitta é diferente.
+            Por que o Lóvitta é diferente.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
             Mais que exames, oferecemos uma experiência cuidadosa, transparente e construída em torno da sua confiança.
@@ -288,7 +315,7 @@ function Equipe() {
               Pós-graduada em Biomedicina Estética, Loren une rigor técnico e olhar humano em cada análise. Sua atuação é guiada por precisão laboratorial, escuta atenta e um compromisso genuíno com a saúde e o bem-estar de cada paciente.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-[15px] md:text-base">
-              É essa combinação entre ciência, cuidado e acolhimento que define a forma como a Lovitta entrega resultados em que você pode confiar.
+              É essa combinação entre ciência, cuidado e acolhimento que define a forma como o Lóvitta entrega resultados em que você pode confiar.
             </p>
 
             <div className="mt-9 grid sm:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
@@ -318,7 +345,7 @@ function Depoimentos() {
   const items = [
     { name: "Mariana Silva", exam: "Check-up Completo", text: "Atendimento impecável e resultados muito rápidos. A equipe é extremamente atenciosa do início ao fim." },
     { name: "Carlos Mendes", exam: "Hemograma", text: "A coleta em domicílio foi um diferencial enorme. Profissionais super qualificados e gentis." },
-    { name: "Ana Beatriz", exam: "Hormônios", text: "Confio plenamente na Lovitta. Precisão nos exames e atendimento humanizado de verdade." },
+    { name: "Ana Beatriz", exam: "Hormônios", text: "Confio plenamente no Lóvitta. Precisão nos exames e atendimento humanizado de verdade." },
   ];
   return (
     <section className="py-24 md:py-32 bg-secondary">
@@ -569,8 +596,8 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <img src={logo} alt="Lovitta" className="h-12 w-12 object-contain" />
-              <span className="font-serif text-2xl font-semibold">Lovitta</span>
+              <img src={logo} alt="Lóvitta" className="h-12 w-12 object-contain" />
+              <span className="font-serif text-2xl font-semibold">Lóvitta</span>
             </div>
             <p className="text-primary-foreground/60 max-w-md leading-relaxed">
               Laboratório de Análises Clínicas. Precisão nos resultados, cuidado em cada detalhe.
@@ -602,7 +629,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-primary-foreground/50">
-          <p>© 2025 Lovitta Laboratório. Todos os direitos reservados.</p>
+          <p>© 2025 Lóvitta Laboratório. Todos os direitos reservados.</p>
           <a href="#" className="hover:text-white transition">Política de Privacidade</a>
         </div>
       </div>
@@ -631,7 +658,7 @@ function Localizacao() {
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-6">
           <div className="rounded-2xl overflow-hidden border border-border h-[420px] shadow-[0_18px_40px_-24px_rgba(15,23,42,0.18)]">
             <iframe
-              title="Localização Lovitta Laboratório"
+              title="Localização Lóvitta Laboratório"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
             />
