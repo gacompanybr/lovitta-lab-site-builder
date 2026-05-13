@@ -480,21 +480,54 @@ Melhor horário: ${form.periodo}`;
           {/* Info column */}
           <div className="lg:col-span-2 space-y-3">
             {[
-              { icon: MapPin, title: "Endereço", text: "Rua Exemplo, 123 — Centro, Sua Cidade" },
-              { icon: Phone, title: "Telefone", text: "(14) 99893-7080" },
-              { icon: Mail, title: "E-mail", text: "lovittalab@hotmail.com" },
+              {
+                icon: MapPin,
+                title: "Endereço",
+                text: "Rua José Alves Peixoto de Noronha, 128 — Duartina/SP",
+                href: "https://www.google.com/maps/dir/?api=1&destination=Rua+Jos%C3%A9+Alves+Peixoto+de+Noronha%2C+128%2C+Duartina%2C+SP",
+                external: true,
+              },
+              {
+                icon: Phone,
+                title: "Telefone",
+                text: "(14) 99893-7080",
+                href: "tel:+5514998937080",
+              },
+              {
+                icon: Mail,
+                title: "E-mail",
+                text: "lovittalab@hotmail.com",
+                href: "mailto:lovittalab@hotmail.com",
+              },
               { icon: Clock, title: "Horário", text: "Seg–Sex: 7h às 18h · Sáb: 7h às 12h" },
-            ].map(({ icon: Icon, title, text }) => (
-              <div key={title} className="flex items-start gap-4 p-5 rounded-xl bg-background border border-border">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+            ].map(({ icon: Icon, title, text, href, external }) => {
+              const content = (
+                <>
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="font-medium text-primary text-sm">{title}</p>
+                    <p className="text-muted-foreground text-sm mt-0.5">{text}</p>
+                  </div>
+                </>
+              );
+              const baseClass = "flex items-start gap-4 p-5 rounded-xl bg-background border border-border";
+              return href ? (
+                <a
+                  key={title}
+                  href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={`${baseClass} hover:border-accent/50 hover:shadow-sm transition-all`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={title} className={baseClass}>
+                  {content}
                 </div>
-                <div>
-                  <p className="font-medium text-primary text-sm">{title}</p>
-                  <p className="text-muted-foreground text-sm mt-0.5">{text}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Form */}
