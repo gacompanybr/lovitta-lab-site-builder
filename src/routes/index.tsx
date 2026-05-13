@@ -659,21 +659,26 @@ function Localizacao() {
           <div className="rounded-2xl overflow-hidden border border-border h-[420px] shadow-[0_18px_40px_-24px_rgba(15,23,42,0.18)]">
             <iframe
               title="Localização Lóvitta Laboratório"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0!2d-46.6333!3d-23.5505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAxLjgiUyA0NsKwMzcnNTkuOSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+              src="https://www.google.com/maps?q=Rua+Jos%C3%A9+Alves+Peixoto+de+Noronha%2C+128%2C+Duartina%2C+SP&output=embed"
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
             />
           </div>
           <div className="space-y-4">
-            <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Rua+Jos%C3%A9+Alves+Peixoto+de+Noronha%2C+128%2C+Duartina%2C+SP"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-6 rounded-2xl bg-primary text-primary-foreground hover:brightness-110 transition"
+            >
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-0.5 text-white/80" strokeWidth={1.6} />
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-white/55 font-semibold">Endereço</p>
-                  <p className="mt-1 font-medium">Rua Exemplo, 123 — Centro</p>
-                  <p className="text-white/70 text-sm">Sua Cidade — UF</p>
+                  <p className="mt-1 font-medium">Rua José Alves Peixoto de Noronha, 128</p>
+                  <p className="text-white/70 text-sm">Duartina — SP</p>
                 </div>
               </div>
-            </div>
+            </a>
             <div className="p-6 rounded-2xl bg-secondary border border-border">
               <div className="flex items-center gap-2 mb-4">
                 <Clock className="w-4 h-4 text-accent" strokeWidth={1.8} />
