@@ -107,8 +107,8 @@ function Navbar() {
       }`}
     >
       <div className="container-x flex items-center justify-between h-24 md:h-28">
-        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lóvitta">
-          <img src={logo} alt="Lóvitta" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
+        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lóvitta — Laboratório de Análises Clínicas">
+          <img src={logo} alt="Lóvitta — Laboratório de Análises Clínicas" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
         </a>
         <nav className="hidden lg:flex items-center gap-9">
           {navLinks.map((l) => (
@@ -162,6 +162,10 @@ function Hero() {
             key={s.src}
             src={s.src}
             alt={s.alt}
+            width={1920}
+            height={1080}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding="async"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${i === current ? "opacity-100" : "opacity-0"}`}
           />
         ))}
@@ -184,10 +188,10 @@ function Hero() {
             <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
           </span>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
-            Precisão nos resultados.<br />
-            <span className="italic font-normal text-white/85">Cuidado em cada detalhe.</span>
+            Lóvitta Laboratório de Análises Clínicas<br />
+            <span className="italic font-normal text-white/90 text-3xl sm:text-4xl md:text-5xl block mt-3">Precisão nos resultados. Cuidado em cada detalhe.</span>
           </h1>
-          <p className="mt-6 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
             Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
