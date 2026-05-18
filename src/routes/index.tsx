@@ -255,14 +255,14 @@ function Hero() {
       <div className="container-x relative z-10 py-16 md:py-24">
         <div className="max-w-2xl fade-up">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-white/95 border border-white/10 text-xs font-medium tracking-[0.18em] uppercase shadow-sm" style={{ backgroundColor: "#2d1927" }}>
-            <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
+            <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas · Duartina-SP
           </span>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
-            Lóvitta Laboratório de Análises Clínicas<br />
+            Laboratório de Análises Clínicas em Duartina-SP<br />
             <span className="italic font-normal text-white/90 text-3xl sm:text-4xl md:text-5xl block mt-3">Precisão nos resultados. Cuidado em cada detalhe.</span>
           </h1>
           <p className="mt-6 text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
-            Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
+            Exames laboratoriais com tecnologia de ponta, coleta domiciliar e atendimento humanizado no Lóvitta Lab — referência em laboratório médico em Duartina e região.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-white shadow-[0_14px_40px_-14px_rgba(204,0,0,0.6)] hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all" style={{ backgroundColor: "#CC0000" }}>
