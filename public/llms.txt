@@ -1,9 +1,13 @@
-# Lóvitta Laboratório de Análises Clínicas
+# Lóvitta Lab — Laboratório Médico em Duartina-SP
 
-> Laboratório de análises clínicas em Duartina/SP, com tecnologia de ponta, coleta domiciliar e atendimento humanizado.
+> Laboratório de análises clínicas em Duartina/SP, com tecnologia de ponta, coleta domiciliar e atendimento humanizado. Referência local em exames laboratoriais, exames de sangue, hormônios e check-up clínico.
 
-A Lóvitta oferece exames laboratoriais com precisão técnica e atendimento acolhedor, sob responsabilidade da biomédica Loren Bermejo Ciminio (CRBM).
+A Lóvitta oferece exames laboratoriais com precisão técnica e atendimento acolhedor em Duartina-SP, sob responsabilidade da biomédica Loren Bermejo Ciminio (CRBM). Atende a cidade de Duartina e região (Bauru, Lençóis Paulista, Agudos).
+
+## Endereço
+
+Rua José Alves Peixoto de Noronha, 128 — Duartina/SP. Telefone/WhatsApp: (14) 99893-7080. E-mail: lovittalab@hotmail.com.
 
 ## Pages
 
-- [Início](/): Apresentação do laboratório, diferenciais, serviços, equipe, localização, FAQ e contato.
+- [Início](/): Laboratório em Duartina — diferenciais, exames laboratoriais, equipe, localização, FAQ e contato.
