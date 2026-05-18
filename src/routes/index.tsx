@@ -11,16 +11,36 @@ import clinicFacade from "@/assets/clinic-facade.png";
 import clinicReception from "@/assets/clinic-reception.png";
 import lorenImg from "@/assets/biomedica.png";
 
+const SITE_URL = "https://www.lovittalab.com.br";
+const OG_IMAGE = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b35dc0e4-0833-4df3-9404-e9ffcb6068f9/id-preview-00a4612e--992925cf-2582-4a0e-a46a-4c1a21083d6e.lovable.app-1778676066841.png";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lóvitta Laboratório — Análises Clínicas com Precisão" },
-      { name: "description", content: "Exames laboratoriais com tecnologia de ponta, coleta domiciliar e resultados online em um atendimento humanizado." },
-      { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
-      { property: "og:description", content: "Precisão nos resultados. Cuidado em cada detalhe." },
+      { title: "Lóvitta Lab | Laboratório Médico em Duartina-SP" },
+      { name: "description", content: "Realize exames laboratoriais com qualidade e agilidade no Lóvitta Lab em Duartina-SP. Atendimento especializado, exames clínicos, coleta domiciliar e resultados rápidos." },
+      { name: "keywords", content: "laboratório em Duartina, laboratório médico Duartina, laboratório de exames Duartina, exames laboratoriais Duartina, laboratório clínico Duartina, exames de sangue Duartina, laboratório Lovitta, análises clínicas Duartina, coleta domiciliar Duartina" },
+      { name: "author", content: "Lóvitta Laboratório de Análises Clínicas" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { name: "geo.region", content: "BR-SP" },
+      { name: "geo.placename", content: "Duartina" },
+      { name: "geo.position", content: "-22.4136;-49.4078" },
+      { name: "ICBM", content: "-22.4136, -49.4078" },
+      { property: "og:title", content: "Lóvitta Lab | Laboratório Médico em Duartina-SP" },
+      { property: "og:description", content: "Exames laboratoriais com precisão e agilidade em Duartina-SP. Coleta domiciliar, atendimento humanizado e resultados rápidos." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL + "/" },
+      { property: "og:site_name", content: "Lóvitta Laboratório" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:alt", content: "Lóvitta Laboratório de Análises Clínicas em Duartina-SP" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Lóvitta Lab | Laboratório Médico em Duartina-SP" },
+      { name: "twitter:description", content: "Exames laboratoriais com qualidade e agilidade em Duartina-SP. Atendimento especializado e resultados rápidos." },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
-      { rel: "canonical", href: "https://www.lovittalab.com.br/" },
+      { rel: "canonical", href: SITE_URL + "/" },
     ],
     scripts: [
       {
@@ -30,28 +50,57 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "Organization",
+              "@id": SITE_URL + "/#organization",
               name: "Lóvitta Laboratório de Análises Clínicas",
-              url: "https://www.lovittalab.com.br",
-              logo: "https://www.lovittalab.com.br/favicon.ico",
+              alternateName: "Lóvitta Lab",
+              url: SITE_URL,
+              logo: SITE_URL + "/favicon.ico",
+              image: OG_IMAGE,
+              sameAs: ["https://www.instagram.com/lovittalaboratorio/"],
             },
             {
               "@type": "WebSite",
+              "@id": SITE_URL + "/#website",
               name: "Lóvitta Laboratório",
-              url: "https://www.lovittalab.com.br",
+              url: SITE_URL,
+              inLanguage: "pt-BR",
+              publisher: { "@id": SITE_URL + "/#organization" },
             },
             {
-              "@type": "MedicalBusiness",
+              "@type": ["MedicalBusiness", "MedicalClinic", "LocalBusiness"],
+              "@id": SITE_URL + "/#localbusiness",
               name: "Lóvitta Laboratório de Análises Clínicas",
-              url: "https://www.lovittalab.com.br",
+              alternateName: "Lóvitta Lab",
+              description: "Laboratório de análises clínicas em Duartina-SP. Exames laboratoriais, coleta domiciliar, exames de sangue, hormônios e check-up completo.",
+              url: SITE_URL,
               telephone: "+55-14-99893-7080",
               email: "lovittalab@hotmail.com",
+              image: OG_IMAGE,
+              logo: SITE_URL + "/favicon.ico",
+              priceRange: "$$",
+              currenciesAccepted: "BRL",
+              medicalSpecialty: ["ClinicalLaboratoryScience", "Pathology"],
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Rua José Alves Peixoto de Noronha, 128",
                 addressLocality: "Duartina",
                 addressRegion: "SP",
+                postalCode: "17470-000",
                 addressCountry: "BR",
               },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: -22.4136,
+                longitude: -49.4078,
+              },
+              hasMap: "https://www.google.com/maps?q=Rua+Jos%C3%A9+Alves+Peixoto+de+Noronha%2C+128%2C+Duartina%2C+SP",
+              areaServed: [
+                { "@type": "City", name: "Duartina" },
+                { "@type": "City", name: "Bauru" },
+                { "@type": "City", name: "Lençóis Paulista" },
+                { "@type": "City", name: "Agudos" },
+                { "@type": "AdministrativeArea", name: "Região de Bauru - SP" },
+              ],
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
@@ -59,16 +108,37 @@ export const Route = createFileRoute("/")({
                   opens: "07:00",
                   closes: "18:00",
                 },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Saturday"],
+                  opens: "07:00",
+                  closes: "12:00",
+                },
+              ],
+              sameAs: ["https://www.instagram.com/lovittalaboratorio/"],
+              availableService: [
+                { "@type": "MedicalProcedure", name: "Exames de sangue em Duartina" },
+                { "@type": "MedicalProcedure", name: "Hemograma completo" },
+                { "@type": "MedicalProcedure", name: "Exames hormonais" },
+                { "@type": "MedicalProcedure", name: "Check-up clínico" },
+                { "@type": "MedicalProcedure", name: "Coleta domiciliar em Duartina e região" },
               ],
             },
             {
               "@type": "FAQPage",
               mainEntity: [
+                { "@type": "Question", name: "Onde fica o laboratório Lóvitta em Duartina-SP?", acceptedAnswer: { "@type": "Answer", text: "O Lóvitta Lab fica na Rua José Alves Peixoto de Noronha, 128 — Duartina/SP. Atendemos pacientes da cidade e de toda a região, incluindo coleta domiciliar mediante agendamento." } },
                 { "@type": "Question", name: "Preciso de jejum para os exames?", acceptedAnswer: { "@type": "Answer", text: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." } },
-                { "@type": "Question", name: "Em quanto tempo recebo os resultados?", acceptedAnswer: { "@type": "Answer", text: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." } },
-                { "@type": "Question", name: "Como funciona a coleta domiciliar?", acceptedAnswer: { "@type": "Answer", text: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." } },
+                { "@type": "Question", name: "Em quanto tempo recebo os resultados dos exames laboratoriais em Duartina?", acceptedAnswer: { "@type": "Answer", text: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." } },
+                { "@type": "Question", name: "Como funciona a coleta domiciliar em Duartina e região?", acceptedAnswer: { "@type": "Answer", text: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível em Duartina e cidades vizinhas — consulte cobertura pelo WhatsApp." } },
                 { "@type": "Question", name: "Quais são os horários de atendimento?", acceptedAnswer: { "@type": "Answer", text: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." } },
                 { "@type": "Question", name: "Como acesso meus resultados de exames?", acceptedAnswer: { "@type": "Answer", text: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade, em conformidade com a LGPD." } },
+              ],
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL + "/" },
               ],
             },
           ],
