@@ -342,10 +342,10 @@ function Exames() {
         <div className="max-w-2xl mb-14 md:mb-16">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Serviços</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
-            Análises clínicas completas, com tecnologia de ponta.
+            Exames laboratoriais em Duartina, com tecnologia de ponta.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
-            Atendemos as principais especialidades médicas com protocolos rigorosos e laudos assinados por profissionais qualificados.
+            Atendemos as principais especialidades médicas em Duartina-SP com protocolos rigorosos e laudos assinados por profissionais qualificados.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
