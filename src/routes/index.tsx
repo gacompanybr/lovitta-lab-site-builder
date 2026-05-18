@@ -19,6 +19,62 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
       { property: "og:description", content: "Precisão nos resultados. Cuidado em cada detalhe." },
     ],
+    links: [
+      { rel: "canonical", href: "https://www.lovittalab.com.br/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Lóvitta Laboratório de Análises Clínicas",
+              url: "https://www.lovittalab.com.br",
+              logo: "https://www.lovittalab.com.br/favicon.ico",
+            },
+            {
+              "@type": "WebSite",
+              name: "Lóvitta Laboratório",
+              url: "https://www.lovittalab.com.br",
+            },
+            {
+              "@type": "MedicalBusiness",
+              name: "Lóvitta Laboratório de Análises Clínicas",
+              url: "https://www.lovittalab.com.br",
+              telephone: "+55-14-99893-7080",
+              email: "lovittalab@hotmail.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Rua José Alves Peixoto de Noronha, 128",
+                addressLocality: "Duartina",
+                addressRegion: "SP",
+                addressCountry: "BR",
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "07:00",
+                  closes: "18:00",
+                },
+              ],
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: [
+                { "@type": "Question", name: "Preciso de jejum para os exames?", acceptedAnswer: { "@type": "Answer", text: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." } },
+                { "@type": "Question", name: "Em quanto tempo recebo os resultados?", acceptedAnswer: { "@type": "Answer", text: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." } },
+                { "@type": "Question", name: "Como funciona a coleta domiciliar?", acceptedAnswer: { "@type": "Answer", text: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." } },
+                { "@type": "Question", name: "Quais são os horários de atendimento?", acceptedAnswer: { "@type": "Answer", text: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." } },
+                { "@type": "Question", name: "Como acesso meus resultados de exames?", acceptedAnswer: { "@type": "Answer", text: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade, em conformidade com a LGPD." } },
+              ],
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
@@ -51,8 +107,8 @@ function Navbar() {
       }`}
     >
       <div className="container-x flex items-center justify-between h-24 md:h-28">
-        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lóvitta">
-          <img src={logo} alt="Lóvitta" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
+        <a href="#inicio" className="flex items-center shrink-0" aria-label="Lóvitta — Laboratório de Análises Clínicas">
+          <img src={logo} alt="Lóvitta — Laboratório de Análises Clínicas" className="h-20 w-20 md:h-24 md:w-24 object-contain" />
         </a>
         <nav className="hidden lg:flex items-center gap-9">
           {navLinks.map((l) => (
@@ -106,6 +162,10 @@ function Hero() {
             key={s.src}
             src={s.src}
             alt={s.alt}
+            width={1920}
+            height={1080}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding="async"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${i === current ? "opacity-100" : "opacity-0"}`}
           />
         ))}
@@ -128,10 +188,10 @@ function Hero() {
             <Sparkles className="w-3.5 h-3.5" /> Análises Clínicas
           </span>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.05] sm:text-6xl md:text-7xl font-semibold text-white tracking-tight">
-            Precisão nos resultados.<br />
-            <span className="italic font-normal text-white/85">Cuidado em cada detalhe.</span>
+            Lóvitta Laboratório de Análises Clínicas<br />
+            <span className="italic font-normal text-white/90 text-3xl sm:text-4xl md:text-5xl block mt-3">Precisão nos resultados. Cuidado em cada detalhe.</span>
           </h1>
-          <p className="mt-6 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
             Tecnologia de ponta e atendimento humanizado para cuidar da sua saúde com a confiança e a clareza que você merece.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
@@ -549,29 +609,32 @@ Melhor horário: ${form.periodo}`;
 
             <div className="mt-7 space-y-5">
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">Nome completo</label>
+                <label htmlFor="contato-nome" className="block text-xs font-medium text-primary mb-1.5">Nome completo</label>
                 <input
+                  id="contato-nome" name="nome"
                   type="text" required maxLength={100}
                   value={form.nome} onChange={update("nome")}
                   placeholder="Digite seu nome"
-                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">WhatsApp</label>
+                <label htmlFor="contato-whatsapp" className="block text-xs font-medium text-primary mb-1.5">WhatsApp</label>
                 <input
+                  id="contato-whatsapp" name="whatsapp"
                   type="tel" required maxLength={20}
                   value={form.whatsapp} onChange={update("whatsapp")}
                   placeholder="(00) 00000-0000"
-                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                 />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-medium text-primary mb-1.5">Tipo de atendimento</label>
+                  <label htmlFor="contato-tipo" className="block text-xs font-medium text-primary mb-1.5">Tipo de atendimento</label>
                   <select
+                    id="contato-tipo" name="tipo"
                     value={form.tipo} onChange={update("tipo")}
                     className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                   >
@@ -579,8 +642,9 @@ Melhor horário: ${form.periodo}`;
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-primary mb-1.5">Melhor período para contato</label>
+                  <label htmlFor="contato-periodo" className="block text-xs font-medium text-primary mb-1.5">Melhor período para contato</label>
                   <select
+                    id="contato-periodo" name="periodo"
                     value={form.periodo} onChange={update("periodo")}
                     className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                   >
@@ -590,12 +654,13 @@ Melhor horário: ${form.periodo}`;
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">Como podemos ajudar?</label>
+                <label htmlFor="contato-mensagem" className="block text-xs font-medium text-primary mb-1.5">Como podemos ajudar?</label>
                 <textarea
+                  id="contato-mensagem" name="mensagem"
                   rows={4} maxLength={1000}
                   value={form.mensagem} onChange={update("mensagem")}
                   placeholder="Descreva rapidamente o que você precisa"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition resize-none"
                 />
               </div>
 
@@ -629,7 +694,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <img src={logo} alt="Lóvitta" className="h-12 w-12 object-contain" />
+              <img src={logo} alt="Lóvitta — Laboratório de Análises Clínicas" className="h-12 w-12 object-contain" />
               <span className="font-serif text-2xl font-semibold">Lóvitta</span>
             </div>
             <p className="text-primary-foreground/60 max-w-md leading-relaxed">

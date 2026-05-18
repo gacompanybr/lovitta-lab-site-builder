@@ -1,0 +1,9 @@
+# Lóvitta Laboratório de Análises Clínicas
+
+> Laboratório de análises clínicas em Duartina/SP, com tecnologia de ponta, coleta domiciliar e atendimento humanizado.
+
+A Lóvitta oferece exames laboratoriais com precisão técnica e atendimento acolhedor, sob responsabilidade da biomédica Loren Bermejo Ciminio (CRBM).
+
+## Pages
+
+- [Início](/): Apresentação do laboratório, diferenciais, serviços, equipe, localização, FAQ e contato.
