@@ -818,10 +818,10 @@ function Localizacao() {
         <div className="max-w-2xl mb-14">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Localização</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-primary tracking-tight">
-            Estamos perto de você.
+            Laboratório clínico em Duartina-SP, perto de você.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
-            Estrutura moderna, fácil acesso e estacionamento. Coleta domiciliar disponível mediante agendamento.
+            Estrutura moderna no centro de Duartina, fácil acesso e estacionamento. Coleta domiciliar em Duartina e região mediante agendamento.
           </p>
         </div>
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-6">
