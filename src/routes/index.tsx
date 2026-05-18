@@ -867,6 +867,27 @@ function Localizacao() {
             </a>
           </div>
         </div>
+
+        <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <article className="p-7 rounded-2xl bg-secondary border border-border">
+            <h3 className="font-serif text-xl font-semibold text-primary mb-3">Laboratório em Duartina</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              O Lóvitta Lab é um laboratório médico em Duartina-SP que une tecnologia, precisão e atendimento humanizado. Equipe especializada para cuidar da sua saúde com agilidade e confiança.
+            </p>
+          </article>
+          <article className="p-7 rounded-2xl bg-secondary border border-border">
+            <h3 className="font-serif text-xl font-semibold text-primary mb-3">Exames laboratoriais em Duartina</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Realizamos exames de sangue, hormônios, sorologia, microbiologia e check-up completo em Duartina, com protocolos rigorosos e resultados entregues com segurança.
+            </p>
+          </article>
+          <article className="p-7 rounded-2xl bg-secondary border border-border">
+            <h3 className="font-serif text-xl font-semibold text-primary mb-3">Exames clínicos em Duartina e região</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Atendimento na unidade e coleta domiciliar em Duartina-SP e cidades vizinhas. Análises clínicas precisas para pacientes, médicos e convênios da região.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
   );
