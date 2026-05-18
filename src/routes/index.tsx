@@ -609,29 +609,32 @@ Melhor horário: ${form.periodo}`;
 
             <div className="mt-7 space-y-5">
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">Nome completo</label>
+                <label htmlFor="contato-nome" className="block text-xs font-medium text-primary mb-1.5">Nome completo</label>
                 <input
+                  id="contato-nome" name="nome"
                   type="text" required maxLength={100}
                   value={form.nome} onChange={update("nome")}
                   placeholder="Digite seu nome"
-                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">WhatsApp</label>
+                <label htmlFor="contato-whatsapp" className="block text-xs font-medium text-primary mb-1.5">WhatsApp</label>
                 <input
+                  id="contato-whatsapp" name="whatsapp"
                   type="tel" required maxLength={20}
                   value={form.whatsapp} onChange={update("whatsapp")}
                   placeholder="(00) 00000-0000"
-                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
+                  className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                 />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-medium text-primary mb-1.5">Tipo de atendimento</label>
+                  <label htmlFor="contato-tipo" className="block text-xs font-medium text-primary mb-1.5">Tipo de atendimento</label>
                   <select
+                    id="contato-tipo" name="tipo"
                     value={form.tipo} onChange={update("tipo")}
                     className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                   >
@@ -639,8 +642,9 @@ Melhor horário: ${form.periodo}`;
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-primary mb-1.5">Melhor período para contato</label>
+                  <label htmlFor="contato-periodo" className="block text-xs font-medium text-primary mb-1.5">Melhor período para contato</label>
                   <select
+                    id="contato-periodo" name="periodo"
                     value={form.periodo} onChange={update("periodo")}
                     className="w-full h-12 px-4 rounded-lg bg-secondary/60 border border-border text-sm text-primary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition"
                   >
@@ -650,12 +654,13 @@ Melhor horário: ${form.periodo}`;
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-primary mb-1.5">Como podemos ajudar?</label>
+                <label htmlFor="contato-mensagem" className="block text-xs font-medium text-primary mb-1.5">Como podemos ajudar?</label>
                 <textarea
+                  id="contato-mensagem" name="mensagem"
                   rows={4} maxLength={1000}
                   value={form.mensagem} onChange={update("mensagem")}
                   placeholder="Descreva rapidamente o que você precisa"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/60 border border-border text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/50 transition resize-none"
                 />
               </div>
 
@@ -689,7 +694,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-14">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <img src={logo} alt="Lóvitta" className="h-12 w-12 object-contain" />
+              <img src={logo} alt="Lóvitta — Laboratório de Análises Clínicas" className="h-12 w-12 object-contain" />
               <span className="font-serif text-2xl font-semibold">Lóvitta</span>
             </div>
             <p className="text-primary-foreground/60 max-w-md leading-relaxed">
