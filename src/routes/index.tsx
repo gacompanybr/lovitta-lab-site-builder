@@ -19,6 +19,62 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Lóvitta Laboratório de Análises Clínicas" },
       { property: "og:description", content: "Precisão nos resultados. Cuidado em cada detalhe." },
     ],
+    links: [
+      { rel: "canonical", href: "https://www.lovittalab.com.br/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Lóvitta Laboratório de Análises Clínicas",
+              url: "https://www.lovittalab.com.br",
+              logo: "https://www.lovittalab.com.br/favicon.ico",
+            },
+            {
+              "@type": "WebSite",
+              name: "Lóvitta Laboratório",
+              url: "https://www.lovittalab.com.br",
+            },
+            {
+              "@type": "MedicalBusiness",
+              name: "Lóvitta Laboratório de Análises Clínicas",
+              url: "https://www.lovittalab.com.br",
+              telephone: "+55-14-99893-7080",
+              email: "lovittalab@hotmail.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Rua José Alves Peixoto de Noronha, 128",
+                addressLocality: "Duartina",
+                addressRegion: "SP",
+                addressCountry: "BR",
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "07:00",
+                  closes: "18:00",
+                },
+              ],
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: [
+                { "@type": "Question", name: "Preciso de jejum para os exames?", acceptedAnswer: { "@type": "Answer", text: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." } },
+                { "@type": "Question", name: "Em quanto tempo recebo os resultados?", acceptedAnswer: { "@type": "Answer", text: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." } },
+                { "@type": "Question", name: "Como funciona a coleta domiciliar?", acceptedAnswer: { "@type": "Answer", text: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." } },
+                { "@type": "Question", name: "Quais são os horários de atendimento?", acceptedAnswer: { "@type": "Answer", text: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." } },
+                { "@type": "Question", name: "Como acesso meus resultados de exames?", acceptedAnswer: { "@type": "Answer", text: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade, em conformidade com a LGPD." } },
+              ],
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
