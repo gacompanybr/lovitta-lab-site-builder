@@ -105,8 +105,8 @@ export const Route = createFileRoute("/")({
                 {
                   "@type": "OpeningHoursSpecification",
                   dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  opens: "07:00",
-                  closes: "18:00",
+                  opens: "06:30",
+                  closes: "17:00",
                 },
                 {
                   "@type": "OpeningHoursSpecification",
@@ -131,7 +131,7 @@ export const Route = createFileRoute("/")({
                 { "@type": "Question", name: "Preciso de jejum para os exames?", acceptedAnswer: { "@type": "Answer", text: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." } },
                 { "@type": "Question", name: "Em quanto tempo recebo os resultados dos exames laboratoriais em Duartina?", acceptedAnswer: { "@type": "Answer", text: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." } },
                 { "@type": "Question", name: "Como funciona a coleta domiciliar em Duartina e região?", acceptedAnswer: { "@type": "Answer", text: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível em Duartina e cidades vizinhas — consulte cobertura pelo WhatsApp." } },
-                { "@type": "Question", name: "Quais são os horários de atendimento?", acceptedAnswer: { "@type": "Answer", text: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." } },
+                { "@type": "Question", name: "Quais são os horários de atendimento?", acceptedAnswer: { "@type": "Answer", text: "Segunda a sexta das 6h30 às 17h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." } },
                 { "@type": "Question", name: "Como acesso meus resultados de exames?", acceptedAnswer: { "@type": "Answer", text: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade, em conformidade com a LGPD." } },
               ],
             },
@@ -514,7 +514,7 @@ function Faq() {
     { q: "Preciso de jejum para os exames?", a: "Depende do exame solicitado. No agendamento, orientamos exatamente o preparo necessário, incluindo tempo de jejum e cuidados específicos." },
     { q: "Em quanto tempo recebo os resultados?", a: "No Lóvitta, cada exame é tratado de forma única, com atenção cuidadosa em todas as etapas do processo laboratorial. Trabalhamos com responsabilidade, precisão e agilidade, garantindo que cada resultado seja entregue dentro de um prazo seguro e adequado para cada tipo de análise." },
     { q: "Como funciona a coleta domiciliar?", a: "Nossa equipe vai até você no horário agendado, com todos os equipamentos e protocolos de biossegurança. Disponível para diversas regiões — consulte cobertura." },
-    { q: "Quais são os horários de atendimento?", a: "Segunda a sexta das 7h às 18h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." },
+    { q: "Quais são os horários de atendimento?", a: "Segunda a sexta das 6h30 às 17h. Sábados: atendimento somente com agendamento prévio. Para coleta domiciliar, horários estendidos sob agendamento." },
     { q: "Como acesso meus resultados de exames?", a: "Os resultados são disponibilizados conforme os protocolos laboratoriais de cada análise, garantindo segurança, precisão e total confidencialidade das informações. Todo o processo segue rigorosamente as diretrizes éticas e de proteção de dados estabelecidas pela LGPD." },
   ];
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -629,7 +629,7 @@ Melhor horário: ${form.periodo}`;
                 text: "lovittalab@hotmail.com",
                 href: "mailto:lovittalab@hotmail.com",
               },
-              { icon: Clock, title: "Horário", text: "Seg–Sex: 7h às 18h · Sáb: 7h às 12h" },
+              { icon: Clock, title: "Horário", text: "Seg–Sex: 6h30 às 17h · Sáb: 7h às 12h" },
             ].map(({ icon: Icon, title, text, href, external }) => {
               const content = (
                 <>
@@ -790,7 +790,7 @@ function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.18em] text-primary-foreground/50 mb-4 font-sans font-medium">Atendimento</h4>
             <ul className="space-y-3 text-primary-foreground/75 text-sm">
-              <li>Seg–Sex: 7h às 18h</li>
+              <li>Seg–Sex: 6h30 às 17h</li>
               <li>Sáb: 7h às 12h</li>
               <li>(14) 99893-7080</li>
               <li>lovittalab@hotmail.com</li>
@@ -808,7 +808,7 @@ function Footer() {
 
 function Localizacao() {
   const horarios = [
-    { dia: "Segunda a Sexta", h: "07h às 18h" },
+    { dia: "Segunda a Sexta", h: "06h30 às 17h" },
     { dia: "Sábado", h: "Somente com agendamento prévio" },
     { dia: "Domingo", h: "Plantão sob agendamento" },
   ];
