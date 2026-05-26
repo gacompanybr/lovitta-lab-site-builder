@@ -4,9 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { installTracking, trackPageView } from "@/lib/tracking";
 
 import appCss from "../styles.css?url";
 
