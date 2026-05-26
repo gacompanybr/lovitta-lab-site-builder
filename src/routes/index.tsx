@@ -586,6 +586,16 @@ WhatsApp: ${form.whatsapp.trim()}
 Tipo de atendimento: ${form.tipo}
 Mensagem: ${form.mensagem.trim() || "—"}
 Melhor horário: ${form.periodo}`;
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "formulario_enviado",
+        form_name: "contato",
+        tipo_atendimento: form.tipo,
+        periodo: form.periodo,
+        page_path: window.location.pathname,
+      });
+    }
     window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
     setTimeout(() => setSending(false), 800);
   };
