@@ -1,4 +1,5 @@
 // GTM dataLayer tracking helpers (client-only, SSR-safe)
+// Only events configured in GTM: clique_whatsapp, telefone_clique, formulario_enviado
 
 type DataLayerEvent = Record<string, unknown> & { event: string };
 
@@ -19,64 +20,39 @@ export function pushEvent(event: string, params: Record<string, unknown> = {}) {
   if (now - last < DEDUPE_MS) return;
   recent.set(key, now);
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event,
-    page_path: window.location.pathname + window.location.search,
-    ...params,
-  });
-}
-
-function findSection(el: Element | null): string {
-  let cur: Element | null = el;
-  while (cur) {
-    if (cur.tagName === "SECTION" && cur.id) return cur.id;
-    cur = cur.parentElement;
-  }
-  return "";
+  window.dataLayer.push({ event, ...params });
 }
 
 function getText(el: Element): string {
   return (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, 80);
 }
 
-const CTA_KEYWORDS = /(agendar|agende|marcar|solicitar|fale|contato|whatsapp|ver serviços|ver servi|cta)/i;
-const EXAME_KEYWORDS = /(agendar.*exame|agende.*exame|marcar.*exame|exame)/i;
-
 function handleClick(e: MouseEvent) {
   const target = e.target as Element | null;
   if (!target) return;
   const anchor = target.closest("a") as HTMLAnchorElement | null;
-  const button = target.closest("button") as HTMLButtonElement | null;
-  const el = anchor || button;
-  if (!el) return;
+  if (!anchor) return;
 
-  const text = getText(el);
-  const section = findSection(el);
-  const base = { button_text: text, section };
+  const href = anchor.getAttribute("href") || "";
+  const text = getText(anchor);
+  const page_path = window.location.pathname;
 
-  if (anchor) {
-    const href = anchor.getAttribute("href") || "";
-    if (/wa\.me|api\.whatsapp\.com|whatsapp:/i.test(href)) {
-      pushEvent("clique_whatsapp", { ...base, link_url: href });
-      if (EXAME_KEYWORDS.test(text)) pushEvent("agendar_exame", base);
-      return;
-    }
-    if (href.startsWith("tel:")) {
-      pushEvent("telefone_clique", { ...base, link_url: href });
-      return;
-    }
-    if (/google\.[^/]+\/maps|maps\.google|maps\.app\.goo\.gl/i.test(href)) {
-      pushEvent("abrir_maps", { ...base, link_url: href });
-      return;
-    }
-  }
-
-  if (EXAME_KEYWORDS.test(text)) {
-    pushEvent("agendar_exame", base);
+  if (/wa\.me|api\.whatsapp\.com|whatsapp\.com/i.test(href)) {
+    pushEvent("clique_whatsapp", {
+      button_text: text,
+      page_path,
+      link_url: href,
+    });
     return;
   }
-  if (CTA_KEYWORDS.test(text)) {
-    pushEvent("clique_cta", base);
+
+  if (href.startsWith("tel:")) {
+    pushEvent("telefone_clique", {
+      button_text: text,
+      page_path,
+      link_url: href,
+    });
+    return;
   }
 }
 
@@ -84,11 +60,11 @@ let installed = false;
 export function installTracking() {
   if (typeof window === "undefined" || installed) return;
   installed = true;
+  // Use capture phase to ensure event fires before any navigation/redirect
   document.addEventListener("click", handleClick, { capture: true });
 }
 
-export function trackPageView(path: string) {
-  if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: "page_view", page_path: path });
+// No-op kept for backwards compatibility with existing imports
+export function trackPageView(_path: string) {
+  // page_view não está configurado no GTM atual; intencionalmente vazio
 }
