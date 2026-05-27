@@ -590,9 +590,6 @@ Melhor horário: ${form.periodo}`;
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "formulario_enviado",
-        form_name: "contato",
-        tipo_atendimento: form.tipo,
-        periodo: form.periodo,
         page_path: window.location.pathname,
       });
     }
